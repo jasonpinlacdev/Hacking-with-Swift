@@ -39,15 +39,15 @@ class ViewController: UIViewController {
 		
 		if numberOfQuestionsAsked > 10 {
 			restartGame()
+		} else {
+			countries.shuffle()
+			correctAnswer = Int.random(in: 0...2)
+			self.title = "\(numberOfQuestionsAsked)/10 \(countries[correctAnswer].uppercased()) \tScore: \(score)"
+			
+			flagButton1.setImage(UIImage(named: countries[0]), for: .normal)
+			flagButton2.setImage(UIImage(named: countries[1]), for: .normal)
+			flagButton3.setImage(UIImage(named: countries[2]), for: .normal)
 		}
-		
-		countries.shuffle()
-		correctAnswer = Int.random(in: 0...2)
-		self.title = "\(numberOfQuestionsAsked)/10 \(countries[correctAnswer].uppercased()) \tScore: \(score)"
-		
-		flagButton1.setImage(UIImage(named: countries[0]), for: .normal)
-		flagButton2.setImage(UIImage(named: countries[1]), for: .normal)
-		flagButton3.setImage(UIImage(named: countries[2]), for: .normal)
 	}
 	
 	@IBAction func flagButtonPressed(_ sender: UIButton) {
@@ -72,11 +72,16 @@ class ViewController: UIViewController {
 	}
 	
 	func restartGame() {
+		let finalScore = score
 		score = 0
 		correctAnswer = 0
-		numberOfQuestionsAsked = 1
+		numberOfQuestionsAsked = 0
+		
+		let ac = UIAlertController(title: "Restart", message: "Your Final Score: \(finalScore)", preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: askQuestion))
+		present(ac, animated: true)
 	}
 	
 	
 }
-
+	
