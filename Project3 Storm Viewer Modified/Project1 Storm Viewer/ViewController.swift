@@ -28,7 +28,7 @@ class ViewController: UITableViewController {
 		
 		title = "Storm Viewer"
 		navigationController?.navigationBar.prefersLargeTitles = true
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendTapped))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Recommend", style: .done, target: self, action: #selector(recommendTapped))
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,7 +50,9 @@ class ViewController: UITableViewController {
 	}
 	
 	@objc func recommendTapped() {
-		
+		let vc = UIActivityViewController(activityItems: ["App Recommendation - Storm Viewer,\nYou have to try this app!"], applicationActivities: [])
+		vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+		present(vc, animated: true)
 	}
 
 }
