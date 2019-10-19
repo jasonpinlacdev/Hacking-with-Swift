@@ -86,6 +86,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
 		}
 		decisionHandler(.cancel)
 	}
+	
+	
 
 }
 
