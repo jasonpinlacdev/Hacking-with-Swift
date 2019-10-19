@@ -69,11 +69,11 @@ class ViewController: UIViewController {
 		flagButton2.setImage(UIImage(named: countries[1]), for: .normal)
 		flagButton3.setImage(UIImage(named: countries[2]), for: .normal)
 		flagToGuess = Int.random(in: 0 ... 2)
-		title = "Question: \(count)\tFlag: \(countries[flagToGuess!].uppercased())\tScore -> "
+		title = "Question: \(count)\tFlag: \(countries[flagToGuess!].uppercased())\t\tScore:"
 	}
 	
 	func restartGame() {
-		let alert = UIAlertController(title: "End of game", message: "\(Double((score/count) * 100))%. You've answered \(score)/\(count) correctly!", preferredStyle: .alert)
+		let alert = UIAlertController(title: "End of game", message: "\(Double(score)/Double(count) * 100.0)%. You've answered \(score)/\(count) correctly!", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Restart", style: .default) { _ in
 			self.count = 0
 			self.score = 0
