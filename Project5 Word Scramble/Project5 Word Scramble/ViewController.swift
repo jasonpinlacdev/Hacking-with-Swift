@@ -21,7 +21,6 @@ class ViewController: UITableViewController {
 	var allWords = [String]()
 	var usedWords = [String]()
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -33,6 +32,7 @@ class ViewController: UITableViewController {
 	
 	func navigationConfigurations() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(resetGame))
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,35 +78,29 @@ class ViewController: UITableViewController {
 	
 	
 	func submit(_ answer: String) {
-		let errorTitle: String
-		let errorMessage: String
 		let loweredAnswer = answer.lowercased()
-		
 		if isPossible(word: loweredAnswer) {
 			if isOriginal(word: loweredAnswer) {
 				if isReal(word: loweredAnswer) {
-					
-					usedWords.insert(loweredAnswer, at: 0)
-					let indexPath = IndexPath(row: 0, section: 0)
-					tableView.insertRows(at: [indexPath], with: .automatic)
-					return
+					if isLargerThanTwoLetters(word: loweredAnswer) {
+						usedWords.insert(loweredAnswer, at: 0)
+						let indexPath = IndexPath(row: 0, section: 0)
+						tableView.insertRows(at: [indexPath], with: .automatic)
+						return
+					} else {
+						showErrorMessage(errorTitle: "Word too small", errorMessage: "The word has to be larger than two letters.")
+					}
 				} else {
-					errorTitle = "That is not a real word"
-					errorMessage = "You can't just make them up, you know."
+					showErrorMessage(errorTitle: "That is not a real word", errorMessage: "You can't just make them up, you know.")
 				}
 			} else {
-				errorTitle = "Word has already been used"
-				errorMessage = "Be more original please."
+				showErrorMessage(errorTitle: "Word has already been used", errorMessage: "Be more original please.")
 			}
 		} else {
-			errorTitle = "Word is not possible"
-			errorMessage = "Can't spell that word from \(title!)"
+			showErrorMessage(errorTitle: "Word is not possible", errorMessage: "Can't spell that word from \(title!)")
 		}
-		
-		let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-		present(ac, animated: true)
 	}
+	
 	
 	
 	func isPossible(word: String) -> Bool {
@@ -123,7 +117,7 @@ class ViewController: UITableViewController {
 	
 	
 	func isOriginal(word: String) -> Bool {
-		if usedWords.contains(word) {
+		if usedWords.contains(word) || word == title {
 			return false
 		}
 		return true
@@ -138,6 +132,19 @@ class ViewController: UITableViewController {
 		return misspelledRange.location == NSNotFound
 	}
 	
+	func isLargerThanTwoLetters(word: String) -> Bool {
+		return word.count > 2
+	}
+	
+	func showErrorMessage(errorTitle: String, errorMessage: String) {
+		let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+		present(ac, animated: true)
+	}
+	
+	@objc func resetGame() {
+		startGame()
+	}
 
 
 }
