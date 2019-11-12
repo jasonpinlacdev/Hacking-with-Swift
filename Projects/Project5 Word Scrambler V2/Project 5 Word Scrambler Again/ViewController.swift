@@ -76,10 +76,12 @@ class ViewController: UITableViewController {
 				if isOriginal(loweredWord) {
 					if isReal(loweredWord) {
 						if isMoreThanTwoLetters(loweredWord) {
-							usedWords.insert(loweredWord, at: 0)
+							
+                            usedWords.insert(loweredWord, at: 0)
 							let indexPath = IndexPath(row: 0, section: 0)
-							tableView.insertRows(at: [indexPath], with: .automatic)
-						} else {
+                            tableView.insertRows(at: [indexPath], with: .automatic)
+						
+                        } else {
 							title = "Word is less the three letters"
 							message = "You're trying to submit a word that is too small."
 							wordValidationAlert(title: title, message: message)

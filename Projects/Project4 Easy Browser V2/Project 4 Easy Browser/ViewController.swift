@@ -8,7 +8,7 @@
 
 
 //  Important Concepts Learned
-//  1. loadView() - loadView() is called before viewDidLoad(). loadView() is called first, and it's where you create your view; viewDidLoad() is called second, and it's where you configure the view that was loaded.
+//  1. loadView() - loadView() is called before viewDidLoad(). loadView() is called first, and it's where you create your view; viewDidLoad() is called second, and it's where you configure the view that was loaded. We use loadView() because we arent using storyboard to setup our view. We are directly assigning the view controllers view property to the webView
 
 //  2. WKWebView
 //  3. Delegation - Delegation is what allows us to customize the behavior of built-in types without having to sub-class them. To implement this design pattern you conform to a protocol
