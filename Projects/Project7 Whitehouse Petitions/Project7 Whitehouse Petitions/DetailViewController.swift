@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  Project7 Whitehouse Petitions
 //
-//  Created by Jason Pinlac on 11/13/19.
+//  Created by Jason Pinlac on 12/29/19.
 //  Copyright © 2019 Jason Pinlac. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ import WebKit
 class DetailViewController: UIViewController {
     
     var webView: WKWebView!
+    
     var detailItem: Petition?
     
     override func loadView() {
@@ -21,27 +22,28 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        // Do any additional setup after loading the view.
         if let detailItem = detailItem {
-            let html = """
+            let html =
+            """
             <html>
-            <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style> body { font-size: 150% } </style>
-            </head>
-            <body>
-            \(detailItem.body)
-            </body>
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <style>
+                            body {font-size: 150%; background-color: black; color: white;}
+                    </style>
+                </head>
+                <body>
+                    <strong>(\(detailItem.signatureCount)) \(detailItem.title)</strong>
+                    <hr/>
+                    \(detailItem.body)
+                </body>
             </html>
             """
-            
             webView.loadHTMLString(html, baseURL: nil)
         }
-
+        
     }
-    
-    
-    
     
 }

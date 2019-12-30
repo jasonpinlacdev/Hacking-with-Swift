@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1E3A5E32335BFFD00BA2FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A5E22335BFFD00BA2FAD /* AppDelegate.swift */; };
-		E1E3A5E52335BFFD00BA2FAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A5E42335BFFD00BA2FAD /* ViewController.swift */; };
-		E1E3A5E82335BFFD00BA2FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A5E62335BFFD00BA2FAD /* Main.storyboard */; };
-		E1E3A5EA2335BFFF00BA2FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A5E92335BFFF00BA2FAD /* Assets.xcassets */; };
-		E1E3A5ED2335BFFF00BA2FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A5EB2335BFFF00BA2FAD /* LaunchScreen.storyboard */; };
+		E17534B623A1CECD00A45F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17534B523A1CECD00A45F6C /* AppDelegate.swift */; };
+		E17534B823A1CECD00A45F6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17534B723A1CECD00A45F6C /* SceneDelegate.swift */; };
+		E17534BA23A1CECD00A45F6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17534B923A1CECD00A45F6C /* ViewController.swift */; };
+		E17534BD23A1CECD00A45F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E17534BB23A1CECD00A45F6C /* Main.storyboard */; };
+		E17534BF23A1CECF00A45F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E17534BE23A1CECF00A45F6C /* Assets.xcassets */; };
+		E17534C223A1CECF00A45F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E17534C023A1CECF00A45F6C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E1E3A5DF2335BFFD00BA2FAD /* Project2 Guess the Flag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project2 Guess the Flag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1E3A5E22335BFFD00BA2FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1E3A5E42335BFFD00BA2FAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E1E3A5E72335BFFD00BA2FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E1E3A5E92335BFFF00BA2FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1E3A5EC2335BFFF00BA2FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E1E3A5EE2335BFFF00BA2FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E17534B223A1CECD00A45F6C /* Project2 Guess The Flag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project2 Guess The Flag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17534B523A1CECD00A45F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E17534B723A1CECD00A45F6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E17534B923A1CECD00A45F6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E17534BC23A1CECD00A45F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E17534BE23A1CECF00A45F6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E17534C123A1CECF00A45F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E17534C323A1CECF00A45F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E1E3A5DC2335BFFD00BA2FAD /* Frameworks */ = {
+		E17534AF23A1CECD00A45F6C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,71 +37,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E1E3A5D62335BFFD00BA2FAD = {
+		E17534A923A1CECD00A45F6C = {
 			isa = PBXGroup;
 			children = (
-				E1E3A5E12335BFFD00BA2FAD /* Project2 Guess the Flag */,
-				E1E3A5E02335BFFD00BA2FAD /* Products */,
+				E17534B423A1CECD00A45F6C /* Project2 Guess The Flag */,
+				E17534B323A1CECD00A45F6C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E1E3A5E02335BFFD00BA2FAD /* Products */ = {
+		E17534B323A1CECD00A45F6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1E3A5DF2335BFFD00BA2FAD /* Project2 Guess the Flag.app */,
+				E17534B223A1CECD00A45F6C /* Project2 Guess The Flag.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1E3A5E12335BFFD00BA2FAD /* Project2 Guess the Flag */ = {
+		E17534B423A1CECD00A45F6C /* Project2 Guess The Flag */ = {
 			isa = PBXGroup;
 			children = (
-				E1E3A5E22335BFFD00BA2FAD /* AppDelegate.swift */,
-				E1E3A5E42335BFFD00BA2FAD /* ViewController.swift */,
-				E1E3A5E62335BFFD00BA2FAD /* Main.storyboard */,
-				E1E3A5E92335BFFF00BA2FAD /* Assets.xcassets */,
-				E1E3A5EB2335BFFF00BA2FAD /* LaunchScreen.storyboard */,
-				E1E3A5EE2335BFFF00BA2FAD /* Info.plist */,
+				E17534B523A1CECD00A45F6C /* AppDelegate.swift */,
+				E17534B723A1CECD00A45F6C /* SceneDelegate.swift */,
+				E17534B923A1CECD00A45F6C /* ViewController.swift */,
+				E17534BB23A1CECD00A45F6C /* Main.storyboard */,
+				E17534BE23A1CECF00A45F6C /* Assets.xcassets */,
+				E17534C023A1CECF00A45F6C /* LaunchScreen.storyboard */,
+				E17534C323A1CECF00A45F6C /* Info.plist */,
 			);
-			path = "Project2 Guess the Flag";
+			path = "Project2 Guess The Flag";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1E3A5DE2335BFFD00BA2FAD /* Project2 Guess the Flag */ = {
+		E17534B123A1CECD00A45F6C /* Project2 Guess The Flag */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1E3A5F12335BFFF00BA2FAD /* Build configuration list for PBXNativeTarget "Project2 Guess the Flag" */;
+			buildConfigurationList = E17534C623A1CECF00A45F6C /* Build configuration list for PBXNativeTarget "Project2 Guess The Flag" */;
 			buildPhases = (
-				E1E3A5DB2335BFFD00BA2FAD /* Sources */,
-				E1E3A5DC2335BFFD00BA2FAD /* Frameworks */,
-				E1E3A5DD2335BFFD00BA2FAD /* Resources */,
+				E17534AE23A1CECD00A45F6C /* Sources */,
+				E17534AF23A1CECD00A45F6C /* Frameworks */,
+				E17534B023A1CECD00A45F6C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Project2 Guess the Flag";
-			productName = "Project2 Guess the Flag";
-			productReference = E1E3A5DF2335BFFD00BA2FAD /* Project2 Guess the Flag.app */;
+			name = "Project2 Guess The Flag";
+			productName = "Project2 Guess The Flag";
+			productReference = E17534B223A1CECD00A45F6C /* Project2 Guess The Flag.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E1E3A5D72335BFFD00BA2FAD /* Project object */ = {
+		E17534AA23A1CECD00A45F6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1030;
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Jason Pinlac";
 				TargetAttributes = {
-					E1E3A5DE2335BFFD00BA2FAD = {
-						CreatedOnToolsVersion = 10.3;
+					E17534B123A1CECD00A45F6C = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
-			buildConfigurationList = E1E3A5DA2335BFFD00BA2FAD /* Build configuration list for PBXProject "Project2 Guess the Flag" */;
+			buildConfigurationList = E17534AD23A1CECD00A45F6C /* Build configuration list for PBXProject "Project2 Guess The Flag" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -107,54 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = E1E3A5D62335BFFD00BA2FAD;
-			productRefGroup = E1E3A5E02335BFFD00BA2FAD /* Products */;
+			mainGroup = E17534A923A1CECD00A45F6C;
+			productRefGroup = E17534B323A1CECD00A45F6C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1E3A5DE2335BFFD00BA2FAD /* Project2 Guess the Flag */,
+				E17534B123A1CECD00A45F6C /* Project2 Guess The Flag */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E1E3A5DD2335BFFD00BA2FAD /* Resources */ = {
+		E17534B023A1CECD00A45F6C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E3A5ED2335BFFF00BA2FAD /* LaunchScreen.storyboard in Resources */,
-				E1E3A5EA2335BFFF00BA2FAD /* Assets.xcassets in Resources */,
-				E1E3A5E82335BFFD00BA2FAD /* Main.storyboard in Resources */,
+				E17534C223A1CECF00A45F6C /* LaunchScreen.storyboard in Resources */,
+				E17534BF23A1CECF00A45F6C /* Assets.xcassets in Resources */,
+				E17534BD23A1CECD00A45F6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E1E3A5DB2335BFFD00BA2FAD /* Sources */ = {
+		E17534AE23A1CECD00A45F6C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E3A5E52335BFFD00BA2FAD /* ViewController.swift in Sources */,
-				E1E3A5E32335BFFD00BA2FAD /* AppDelegate.swift in Sources */,
+				E17534BA23A1CECD00A45F6C /* ViewController.swift in Sources */,
+				E17534B623A1CECD00A45F6C /* AppDelegate.swift in Sources */,
+				E17534B823A1CECD00A45F6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1E3A5E62335BFFD00BA2FAD /* Main.storyboard */ = {
+		E17534BB23A1CECD00A45F6C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1E3A5E72335BFFD00BA2FAD /* Base */,
+				E17534BC23A1CECD00A45F6C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		E1E3A5EB2335BFFF00BA2FAD /* LaunchScreen.storyboard */ = {
+		E17534C023A1CECF00A45F6C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1E3A5EC2335BFFF00BA2FAD /* Base */,
+				E17534C123A1CECF00A45F6C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -162,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E1E3A5EF2335BFFF00BA2FAD /* Debug */ = {
+		E17534C423A1CECF00A45F6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -194,7 +198,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -213,7 +216,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -223,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		E1E3A5F02335BFFF00BA2FAD /* Release */ = {
+		E17534C523A1CECF00A45F6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,7 +258,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -268,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -278,64 +280,64 @@
 			};
 			name = Release;
 		};
-		E1E3A5F22335BFFF00BA2FAD /* Debug */ = {
+		E17534C723A1CECF00A45F6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XWVP4F494Z;
-				INFOPLIST_FILE = "Project2 Guess the Flag/Info.plist";
+				INFOPLIST_FILE = "Project2 Guess The Flag/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project2-Guess-the-Flag";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project2-Guess-The-Flag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		E1E3A5F32335BFFF00BA2FAD /* Release */ = {
+		E17534C823A1CECF00A45F6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XWVP4F494Z;
-				INFOPLIST_FILE = "Project2 Guess the Flag/Info.plist";
+				INFOPLIST_FILE = "Project2 Guess The Flag/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project2-Guess-the-Flag";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project2-Guess-The-Flag";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1E3A5DA2335BFFD00BA2FAD /* Build configuration list for PBXProject "Project2 Guess the Flag" */ = {
+		E17534AD23A1CECD00A45F6C /* Build configuration list for PBXProject "Project2 Guess The Flag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1E3A5EF2335BFFF00BA2FAD /* Debug */,
-				E1E3A5F02335BFFF00BA2FAD /* Release */,
+				E17534C423A1CECF00A45F6C /* Debug */,
+				E17534C523A1CECF00A45F6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1E3A5F12335BFFF00BA2FAD /* Build configuration list for PBXNativeTarget "Project2 Guess the Flag" */ = {
+		E17534C623A1CECF00A45F6C /* Build configuration list for PBXNativeTarget "Project2 Guess The Flag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1E3A5F22335BFFF00BA2FAD /* Debug */,
-				E1E3A5F32335BFFF00BA2FAD /* Release */,
+				E17534C723A1CECF00A45F6C /* Debug */,
+				E17534C823A1CECF00A45F6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E1E3A5D72335BFFD00BA2FAD /* Project object */;
+	rootObject = E17534AA23A1CECD00A45F6C /* Project object */;
 }

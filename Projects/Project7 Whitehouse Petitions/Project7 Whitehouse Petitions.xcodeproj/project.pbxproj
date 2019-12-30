@@ -7,33 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1999A61237B6B9600B5B227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999A60237B6B9600B5B227 /* AppDelegate.swift */; };
-		E1999A63237B6B9600B5B227 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999A62237B6B9600B5B227 /* SceneDelegate.swift */; };
-		E1999A65237B6B9600B5B227 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999A64237B6B9600B5B227 /* ViewController.swift */; };
-		E1999A68237B6B9600B5B227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1999A66237B6B9600B5B227 /* Main.storyboard */; };
-		E1999A6A237B6B9800B5B227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1999A69237B6B9800B5B227 /* Assets.xcassets */; };
-		E1999A6D237B6B9800B5B227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1999A6B237B6B9800B5B227 /* LaunchScreen.storyboard */; };
-		E1999A9D237C8EB400B5B227 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999A9C237C8EB400B5B227 /* Petition.swift */; };
-		E1999A9F237C8ED000B5B227 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999A9E237C8ED000B5B227 /* Petitions.swift */; };
-		E1999AA3237C94D200B5B227 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1999AA2237C94D200B5B227 /* DetailViewController.swift */; };
+		E1552B5B23AF37B1005A138F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1552B5A23AF37B1005A138F /* AppDelegate.swift */; };
+		E1552B5D23AF37B1005A138F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1552B5C23AF37B1005A138F /* SceneDelegate.swift */; };
+		E1552B5F23AF37B1005A138F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1552B5E23AF37B1005A138F /* ViewController.swift */; };
+		E1552B6223AF37B1005A138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1552B6023AF37B1005A138F /* Main.storyboard */; };
+		E1552B6423AF37B5005A138F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1552B6323AF37B5005A138F /* Assets.xcassets */; };
+		E1552B6723AF37B5005A138F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1552B6523AF37B5005A138F /* LaunchScreen.storyboard */; };
+		E188C48E23B963C90093176D /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188C48D23B963C90093176D /* Petition.swift */; };
+		E188C49023B963DC0093176D /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188C48F23B963DC0093176D /* Petitions.swift */; };
+		E188C49223B967880093176D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188C49123B967880093176D /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E1999A5D237B6B9600B5B227 /* Project7 Whitehouse Petitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project7 Whitehouse Petitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1999A60237B6B9600B5B227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1999A62237B6B9600B5B227 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1999A64237B6B9600B5B227 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E1999A67237B6B9600B5B227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E1999A69237B6B9800B5B227 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1999A6C237B6B9800B5B227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E1999A6E237B6B9800B5B227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1999A9C237C8EB400B5B227 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
-		E1999A9E237C8ED000B5B227 /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
-		E1999AA2237C94D200B5B227 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E1552B5723AF37B1005A138F /* Project7 Whitehouse Petitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project7 Whitehouse Petitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1552B5A23AF37B1005A138F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1552B5C23AF37B1005A138F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E1552B5E23AF37B1005A138F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1552B6123AF37B1005A138F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1552B6323AF37B5005A138F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1552B6623AF37B5005A138F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1552B6823AF37B5005A138F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E188C48D23B963C90093176D /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
+		E188C48F23B963DC0093176D /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		E188C49123B967880093176D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E1999A5A237B6B9600B5B227 /* Frameworks */ = {
+		E1552B5423AF37B1005A138F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,35 +43,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E1999A54237B6B9600B5B227 = {
+		E1552B4E23AF37B1005A138F = {
 			isa = PBXGroup;
 			children = (
-				E1999A5F237B6B9600B5B227 /* Project7 Whitehouse Petitions */,
-				E1999A5E237B6B9600B5B227 /* Products */,
+				E1552B5923AF37B1005A138F /* Project7 Whitehouse Petitions */,
+				E1552B5823AF37B1005A138F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E1999A5E237B6B9600B5B227 /* Products */ = {
+		E1552B5823AF37B1005A138F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1999A5D237B6B9600B5B227 /* Project7 Whitehouse Petitions.app */,
+				E1552B5723AF37B1005A138F /* Project7 Whitehouse Petitions.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1999A5F237B6B9600B5B227 /* Project7 Whitehouse Petitions */ = {
+		E1552B5923AF37B1005A138F /* Project7 Whitehouse Petitions */ = {
 			isa = PBXGroup;
 			children = (
-				E1999A60237B6B9600B5B227 /* AppDelegate.swift */,
-				E1999A62237B6B9600B5B227 /* SceneDelegate.swift */,
-				E1999A64237B6B9600B5B227 /* ViewController.swift */,
-				E1999AA2237C94D200B5B227 /* DetailViewController.swift */,
-				E1999A9C237C8EB400B5B227 /* Petition.swift */,
-				E1999A9E237C8ED000B5B227 /* Petitions.swift */,
-				E1999A66237B6B9600B5B227 /* Main.storyboard */,
-				E1999A69237B6B9800B5B227 /* Assets.xcassets */,
-				E1999A6B237B6B9800B5B227 /* LaunchScreen.storyboard */,
-				E1999A6E237B6B9800B5B227 /* Info.plist */,
+				E1552B5A23AF37B1005A138F /* AppDelegate.swift */,
+				E1552B5C23AF37B1005A138F /* SceneDelegate.swift */,
+				E1552B5E23AF37B1005A138F /* ViewController.swift */,
+				E188C49123B967880093176D /* DetailViewController.swift */,
+				E188C48D23B963C90093176D /* Petition.swift */,
+				E188C48F23B963DC0093176D /* Petitions.swift */,
+				E1552B6023AF37B1005A138F /* Main.storyboard */,
+				E1552B6323AF37B5005A138F /* Assets.xcassets */,
+				E1552B6523AF37B5005A138F /* LaunchScreen.storyboard */,
+				E1552B6823AF37B5005A138F /* Info.plist */,
 			);
 			path = "Project7 Whitehouse Petitions";
 			sourceTree = "<group>";
@@ -79,13 +79,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1999A5C237B6B9600B5B227 /* Project7 Whitehouse Petitions */ = {
+		E1552B5623AF37B1005A138F /* Project7 Whitehouse Petitions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1999A71237B6B9800B5B227 /* Build configuration list for PBXNativeTarget "Project7 Whitehouse Petitions" */;
+			buildConfigurationList = E1552B6B23AF37B5005A138F /* Build configuration list for PBXNativeTarget "Project7 Whitehouse Petitions" */;
 			buildPhases = (
-				E1999A59237B6B9600B5B227 /* Sources */,
-				E1999A5A237B6B9600B5B227 /* Frameworks */,
-				E1999A5B237B6B9600B5B227 /* Resources */,
+				E1552B5323AF37B1005A138F /* Sources */,
+				E1552B5423AF37B1005A138F /* Frameworks */,
+				E1552B5523AF37B1005A138F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -93,25 +93,25 @@
 			);
 			name = "Project7 Whitehouse Petitions";
 			productName = "Project7 Whitehouse Petitions";
-			productReference = E1999A5D237B6B9600B5B227 /* Project7 Whitehouse Petitions.app */;
+			productReference = E1552B5723AF37B1005A138F /* Project7 Whitehouse Petitions.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E1999A55237B6B9600B5B227 /* Project object */ = {
+		E1552B4F23AF37B1005A138F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Jason Pinlac";
 				TargetAttributes = {
-					E1999A5C237B6B9600B5B227 = {
-						CreatedOnToolsVersion = 11.2;
+					E1552B5623AF37B1005A138F = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
-			buildConfigurationList = E1999A58237B6B9600B5B227 /* Build configuration list for PBXProject "Project7 Whitehouse Petitions" */;
+			buildConfigurationList = E1552B5223AF37B1005A138F /* Build configuration list for PBXProject "Project7 Whitehouse Petitions" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -119,58 +119,58 @@
 				en,
 				Base,
 			);
-			mainGroup = E1999A54237B6B9600B5B227;
-			productRefGroup = E1999A5E237B6B9600B5B227 /* Products */;
+			mainGroup = E1552B4E23AF37B1005A138F;
+			productRefGroup = E1552B5823AF37B1005A138F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1999A5C237B6B9600B5B227 /* Project7 Whitehouse Petitions */,
+				E1552B5623AF37B1005A138F /* Project7 Whitehouse Petitions */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E1999A5B237B6B9600B5B227 /* Resources */ = {
+		E1552B5523AF37B1005A138F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1999A6D237B6B9800B5B227 /* LaunchScreen.storyboard in Resources */,
-				E1999A6A237B6B9800B5B227 /* Assets.xcassets in Resources */,
-				E1999A68237B6B9600B5B227 /* Main.storyboard in Resources */,
+				E1552B6723AF37B5005A138F /* LaunchScreen.storyboard in Resources */,
+				E1552B6423AF37B5005A138F /* Assets.xcassets in Resources */,
+				E1552B6223AF37B1005A138F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E1999A59237B6B9600B5B227 /* Sources */ = {
+		E1552B5323AF37B1005A138F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1999A65237B6B9600B5B227 /* ViewController.swift in Sources */,
-				E1999A9D237C8EB400B5B227 /* Petition.swift in Sources */,
-				E1999A61237B6B9600B5B227 /* AppDelegate.swift in Sources */,
-				E1999AA3237C94D200B5B227 /* DetailViewController.swift in Sources */,
-				E1999A63237B6B9600B5B227 /* SceneDelegate.swift in Sources */,
-				E1999A9F237C8ED000B5B227 /* Petitions.swift in Sources */,
+				E1552B5F23AF37B1005A138F /* ViewController.swift in Sources */,
+				E188C48E23B963C90093176D /* Petition.swift in Sources */,
+				E1552B5B23AF37B1005A138F /* AppDelegate.swift in Sources */,
+				E188C49223B967880093176D /* DetailViewController.swift in Sources */,
+				E1552B5D23AF37B1005A138F /* SceneDelegate.swift in Sources */,
+				E188C49023B963DC0093176D /* Petitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1999A66237B6B9600B5B227 /* Main.storyboard */ = {
+		E1552B6023AF37B1005A138F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1999A67237B6B9600B5B227 /* Base */,
+				E1552B6123AF37B1005A138F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		E1999A6B237B6B9800B5B227 /* LaunchScreen.storyboard */ = {
+		E1552B6523AF37B5005A138F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1999A6C237B6B9800B5B227 /* Base */,
+				E1552B6623AF37B5005A138F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E1999A6F237B6B9800B5B227 /* Debug */ = {
+		E1552B6923AF37B5005A138F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +238,7 @@
 			};
 			name = Debug;
 		};
-		E1999A70237B6B9800B5B227 /* Release */ = {
+		E1552B6A23AF37B5005A138F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,7 +292,7 @@
 			};
 			name = Release;
 		};
-		E1999A72237B6B9800B5B227 /* Debug */ = {
+		E1552B6C23AF37B5005A138F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -310,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		E1999A73237B6B9800B5B227 /* Release */ = {
+		E1552B6D23AF37B5005A138F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -331,25 +331,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1999A58237B6B9600B5B227 /* Build configuration list for PBXProject "Project7 Whitehouse Petitions" */ = {
+		E1552B5223AF37B1005A138F /* Build configuration list for PBXProject "Project7 Whitehouse Petitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1999A6F237B6B9800B5B227 /* Debug */,
-				E1999A70237B6B9800B5B227 /* Release */,
+				E1552B6923AF37B5005A138F /* Debug */,
+				E1552B6A23AF37B5005A138F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1999A71237B6B9800B5B227 /* Build configuration list for PBXNativeTarget "Project7 Whitehouse Petitions" */ = {
+		E1552B6B23AF37B5005A138F /* Build configuration list for PBXNativeTarget "Project7 Whitehouse Petitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1999A72237B6B9800B5B227 /* Debug */,
-				E1999A73237B6B9800B5B227 /* Release */,
+				E1552B6C23AF37B5005A138F /* Debug */,
+				E1552B6D23AF37B5005A138F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E1999A55237B6B9600B5B227 /* Project object */;
+	rootObject = E1552B4F23AF37B1005A138F /* Project object */;
 }

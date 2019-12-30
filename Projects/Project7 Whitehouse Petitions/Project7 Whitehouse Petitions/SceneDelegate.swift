@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Project7 Whitehouse Petitions
 //
-//  Created by Jason Pinlac on 11/12/19.
+//  Created by Jason Pinlac on 12/22/19.
 //  Copyright © 2019 Jason Pinlac. All rights reserved.
 //
 
@@ -21,11 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let tabBarController = window?.rootViewController as? UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "NavController")
+            let vc = storyboard.instantiateViewController(identifier: "NavController")
             vc.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
             tabBarController.viewControllers?.append(vc)
         }
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
