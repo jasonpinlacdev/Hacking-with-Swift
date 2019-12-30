@@ -12,7 +12,7 @@ class ViewController: UITableViewController {
     
     var petitions = [Petition]()
     var allPetitions = [Petition]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,7 +54,8 @@ class ViewController: UITableViewController {
             [weak ac, weak self] action in
             guard let searchWord = ac?.textFields?[0].text else { return }
             self?.petitions.removeAll(keepingCapacity: true)
-            for petition in self!.allPetitions {
+            
+            for petition in self?.allPetitions ?? [] {
                 if petition.title.contains(searchWord) || petition.body.contains(searchWord) {
                     self?.petitions.append(petition)
                 }
@@ -90,10 +91,10 @@ class ViewController: UITableViewController {
     }
     
     func showError() {
-           let ac = UIAlertController(title: "URL data loading error", message: "There was a problem loading the Petition's feed; Please check your connection and try again.", preferredStyle: .alert)
-           ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
-           present(ac, animated: true)
-       }
+        let ac = UIAlertController(title: "URL data loading error", message: "There was a problem loading the Petition's feed; Please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        present(ac, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petitions.count
@@ -113,6 +114,6 @@ class ViewController: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-
+    
 }
 
