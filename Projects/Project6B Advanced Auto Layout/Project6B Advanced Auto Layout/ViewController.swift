@@ -49,6 +49,9 @@ class ViewController: UIViewController {
         self.view.addSubview(label3)
         self.view.addSubview(label4)
         self.view.addSubview(label5)
+    
+        
+        
         
         // VISUAL FORMAT LANGUAGE - VFL
 //        let viewsDictionary = [
@@ -67,10 +70,12 @@ class ViewController: UIViewController {
 //
 //        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]-(>=10)-|", options: [], metrics: metrics, views: viewsDictionary))
 
+        
+        
+        
+        
+        
         // ANCHORS
-        
-        
-        
         var previous: UILabel?
         
         for label in [label1, label2, label3, label4, label5] {
