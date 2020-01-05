@@ -37,7 +37,6 @@ class ViewController: UITableViewController {
             }
             self?.showError()
         }
-        
     }
     
     func parse(json data: Data) {
@@ -68,28 +67,31 @@ class ViewController: UITableViewController {
     
     func setup() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
-        let searchButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(search))
+        let searchButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(filter))
         let resetButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
         navigationItem.rightBarButtonItems = [searchButton, resetButton]
     }
     
-    @objc func search() {
+    @objc func filter() {
         let ac = UIAlertController(title: "Search filter", message: nil, preferredStyle: .alert)
         ac.addTextField()
         
-        let submit = UIAlertAction(title: "Submit", style: .default) {
-            [weak ac, weak self] action in
+        let submit = UIAlertAction(title: "Submit", style: .default) { [weak ac, weak self] _ in
             guard let searchWord = ac?.textFields?[0].text else { return }
             self?.petitions.removeAll(keepingCapacity: true)
             
-            for petition in self?.allPetitions ?? [] {
-                if petition.title.contains(searchWord) || petition.body.contains(searchWord) {
-                    self?.petitions.append(petition)
+            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                for petition in self?.allPetitions ?? [] {
+                    if petition.title.contains(searchWord) || petition.body.contains(searchWord) {
+                        self?.petitions.append(petition)
+                    }
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
                 }
             }
-            self?.tableView.reloadData()
+            
         }
-        
         ac.addAction(submit)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
@@ -105,6 +107,9 @@ class ViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
         present(ac, animated: true)
     }
+    
+    
+    
     
     
     

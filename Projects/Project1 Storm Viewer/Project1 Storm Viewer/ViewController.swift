@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var pictures = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,18 +20,18 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Recommend", style: .plain, target: self, action: #selector(recommend))
         
+        performSelector(inBackground: #selector(getPictures), with: nil)
+    }
+    
+    @objc func getPictures() {
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
-        let items = try!fm.contentsOfDirectory(atPath: path)
+        let items = try! fm.contentsOfDirectory(atPath: path)
         
         for item in items {
-            if item.hasPrefix("nssl") {
-                pictures.append(item)
-            }
+            if item.hasPrefix("nssl") { pictures.append(item) }
         }
-        
         pictures.sort()
-        
     }
     
     @objc func recommend() {
@@ -57,7 +57,7 @@ class ViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
-
+    
+    
 }
 

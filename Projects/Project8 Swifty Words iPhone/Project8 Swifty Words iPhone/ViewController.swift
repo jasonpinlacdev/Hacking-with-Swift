@@ -88,7 +88,6 @@ class ViewController: UIViewController {
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         view.addSubview(clearButton)
         
-        
         buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
@@ -96,7 +95,6 @@ class ViewController: UIViewController {
         // BUTTONS
         let buttonWidth = 86
         let buttonHeight = 60
-        
         for column in 0 ..< 4 {
             for row in 0 ..< 5 {
                 let button = UIButton(type: .system)
@@ -113,25 +111,9 @@ class ViewController: UIViewController {
             }
         }
         
-        
-        // BORDERS FOR FORMATTING UI
-        //                wordsCompletedLabel.layer.borderColor = UIColor.lightGray.cgColor
-        //                wordsCompletedLabel.layer.borderWidth = 1
-        //                scoreLabel.layer.borderColor = UIColor.lightGray.cgColor
-        //                scoreLabel.layer.borderWidth = 1
-        //                cluesLabel.layer.borderColor = UIColor.lightGray.cgColor
-        //                cluesLabel.layer.borderWidth = 1
-        //                answersLabel.layer.borderColor = UIColor.lightGray.cgColor
-        //                answersLabel.layer.borderWidth = 1
         currentAnswerTextField.layer.borderColor = UIColor.lightGray.cgColor
         currentAnswerTextField.layer.borderWidth = 1
         currentAnswerTextField.layer.cornerRadius = 10
-        //                buttonsView.layer.borderWidth = 1
-        //                buttonsView.layer.borderColor = UIColor.lightGray.cgColor
-        //                submitButton.layer.borderWidth = 1
-        //                submitButton.layer.borderColor = UIColor.lightGray.cgColor
-        //                clearButton.layer.borderWidth = 1
-        //                clearButton.layer.borderColor = UIColor.lightGray.cgColor
         
         NSLayoutConstraint.activate([
             wordsCompletedLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -164,10 +146,7 @@ class ViewController: UIViewController {
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsView.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 10),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
-            
         ])
-        
-        
     }
     
     override func viewDidLoad() {
@@ -205,6 +184,11 @@ class ViewController: UIViewController {
                     ac.addAction(UIAlertAction(title: "Level 1", style: .default, handler: self?.levelTapped))
                     ac.addAction(UIAlertAction(title: "Level 2", style: .default, handler: self?.levelTapped))
                     self?.present(ac, animated: true)
+                    
+                    self?.solutions.removeAll(keepingCapacity: true)
+                    for button in self?.letterButtons ?? [] {
+                        button.isHidden = false
+                    }
                 }
             })
             present(ac, animated: true)
@@ -217,7 +201,11 @@ class ViewController: UIViewController {
             score += 1
             wordsCompleted += 1
         } else {
-            let ac = UIAlertController(title: "Incorrect", message: "\"\(currentAnswer)\" is incorrect", preferredStyle: .alert)
+            var message = "\"\(currentAnswer)\" is incorrect"
+            if currentAnswer == "" {
+                message = "Tap the letters before submitting an answer"
+            }
+            let ac = UIAlertController(title: "Incorrect", message: message, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
             present(ac, animated: true)
             score -= 1
@@ -230,48 +218,48 @@ class ViewController: UIViewController {
     }
     
     func loadLevel() {
-        guard let levelURL = Bundle.main.url(forResource: "level\(currentLevel)", withExtension: "txt") else { return }
-        guard let levelContents = try? String(contentsOf: levelURL).trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        
-        var cluesText = ""
-        var answersText = ""
-        var letterBits = [String]()
-        
-        var levelLines = levelContents.components(separatedBy: "\n")
-        levelLines.shuffle()
-        
-        for (index, line) in levelLines.enumerated() {
-            let lineParts = line.components(separatedBy: ": ")
-            let answer = lineParts[0]
-            let clue = lineParts[1]
+        DispatchQueue.global(qos: .default).async { [weak self] in
+            guard let levelURL = Bundle.main.url(forResource: "level\((self?.currentLevel)!)", withExtension: "txt") else { print("Error: getting level url"); return }
+            guard let levelContents = try? String(contentsOf: levelURL).trimmingCharacters(in: .whitespacesAndNewlines) else { print("Error: getting level contents of the provided url"); return }
             
-            cluesText += "\(index + 1). \(clue)\n"
-            let answerWord = answer.replacingOccurrences(of: "|", with: "")
-            answersText += "\(answerWord.count) letters\n"
-            solutions.append(answerWord)
-            
-            letterBits += answer.components(separatedBy: "|")
-            
-        }
-        cluesLabel.text = cluesText.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel.text = answersText.trimmingCharacters(in: .whitespacesAndNewlines)
+            var cluesText = ""
+            var answersText = ""
+            var letterBits = [String]()
         
-        if letterBits.count == letterButtons.count {
-            for button in letterButtons {
-                button.setTitle(letterBits.remove(at: Int.random(in: 0..<letterBits.count)), for: .normal)
+            var levelLines = levelContents.components(separatedBy: "\n")
+            levelLines.shuffle()
+            
+            for (index, line) in levelLines.enumerated() {
+                let lineParts = line.components(separatedBy: ": ")
+                let answer = lineParts[0]
+                let clue = lineParts[1]
+                
+                cluesText += "\(index + 1). \(clue)\n"
+                let answerWord = answer.replacingOccurrences(of: "|", with: "")
+                answersText += "\(answerWord.count) letters\n"
+                self?.solutions.append(answerWord)
+                
+                letterBits += answer.components(separatedBy: "|")
+            }
+            
+            DispatchQueue.main.sync {
+                self?.cluesLabel.text = cluesText.trimmingCharacters(in: .whitespacesAndNewlines)
+                self?.answersLabel.text = answersText.trimmingCharacters(in: .whitespacesAndNewlines)
+                if letterBits.count == self?.letterButtons.count {
+                    for button in self?.letterButtons ?? [] {
+                        button.setTitle(letterBits.remove(at: Int.random(in: 0..<letterBits.count)), for: .normal)
+                    }
+                }
             }
         }
+        
     }
     
     func levelTapped(action: UIAlertAction) {
-        if let title = action.title {
-            let titleParts = title.components(separatedBy: " ")
+        if let levelTitle = action.title {
+            let titleParts = levelTitle.components(separatedBy: " ")
             if let levelNumber = Int(titleParts[1]) {
                 currentLevel = levelNumber
-                solutions.removeAll()
-                for button in letterButtons {
-                    button.isHidden = false
-                }
                 loadLevel()
             }
         }
