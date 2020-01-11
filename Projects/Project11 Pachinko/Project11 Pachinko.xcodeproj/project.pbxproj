@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1134E4523C92C0F001CF9AB /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = E1134E4423C92C0E001CF9AB /* FireParticles.sks */; };
+		E1A8E0FE23C7A7DB00F96EAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8E0FD23C7A7DB00F96EAF /* AppDelegate.swift */; };
+		E1A8E10023C7A7DB00F96EAF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0FF23C7A7DB00F96EAF /* GameScene.sks */; };
+		E1A8E10423C7A7DB00F96EAF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8E10323C7A7DB00F96EAF /* GameScene.swift */; };
+		E1A8E10623C7A7DB00F96EAF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8E10523C7A7DB00F96EAF /* GameViewController.swift */; };
+		E1A8E10923C7A7DB00F96EAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E10723C7A7DB00F96EAF /* Main.storyboard */; };
+		E1A8E10B23C7A7DD00F96EAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E10A23C7A7DD00F96EAF /* Assets.xcassets */; };
+		E1A8E10E23C7A7DD00F96EAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E10C23C7A7DD00F96EAF /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E1134E4423C92C0E001CF9AB /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
+		E1A8E0FA23C7A7DB00F96EAF /* Project11 Pachinko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project11 Pachinko.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A8E0FD23C7A7DB00F96EAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1A8E0FF23C7A7DB00F96EAF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		E1A8E10323C7A7DB00F96EAF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E1A8E10523C7A7DB00F96EAF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E1A8E10823C7A7DB00F96EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1A8E10A23C7A7DD00F96EAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1A8E10D23C7A7DD00F96EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1A8E10F23C7A7DD00F96EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1A8E0F723C7A7DB00F96EAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1A8E0F123C7A7DB00F96EAF = {
+			isa = PBXGroup;
+			children = (
+				E1A8E0FC23C7A7DB00F96EAF /* Project11 Pachinko */,
+				E1A8E0FB23C7A7DB00F96EAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1A8E0FB23C7A7DB00F96EAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8E0FA23C7A7DB00F96EAF /* Project11 Pachinko.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1A8E0FC23C7A7DB00F96EAF /* Project11 Pachinko */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8E0FD23C7A7DB00F96EAF /* AppDelegate.swift */,
+				E1A8E0FF23C7A7DB00F96EAF /* GameScene.sks */,
+				E1A8E10323C7A7DB00F96EAF /* GameScene.swift */,
+				E1A8E10523C7A7DB00F96EAF /* GameViewController.swift */,
+				E1A8E10723C7A7DB00F96EAF /* Main.storyboard */,
+				E1A8E10A23C7A7DD00F96EAF /* Assets.xcassets */,
+				E1134E4423C92C0E001CF9AB /* FireParticles.sks */,
+				E1A8E10C23C7A7DD00F96EAF /* LaunchScreen.storyboard */,
+				E1A8E10F23C7A7DD00F96EAF /* Info.plist */,
+			);
+			path = "Project11 Pachinko";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1A8E0F923C7A7DB00F96EAF /* Project11 Pachinko */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1A8E11223C7A7DD00F96EAF /* Build configuration list for PBXNativeTarget "Project11 Pachinko" */;
+			buildPhases = (
+				E1A8E0F623C7A7DB00F96EAF /* Sources */,
+				E1A8E0F723C7A7DB00F96EAF /* Frameworks */,
+				E1A8E0F823C7A7DB00F96EAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Project11 Pachinko";
+			productName = "Project11 Pachinko";
+			productReference = E1A8E0FA23C7A7DB00F96EAF /* Project11 Pachinko.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1A8E0F223C7A7DB00F96EAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Jason Pinlac";
+				TargetAttributes = {
+					E1A8E0F923C7A7DB00F96EAF = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = E1A8E0F523C7A7DB00F96EAF /* Build configuration list for PBXProject "Project11 Pachinko" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1A8E0F123C7A7DB00F96EAF;
+			productRefGroup = E1A8E0FB23C7A7DB00F96EAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1A8E0F923C7A7DB00F96EAF /* Project11 Pachinko */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1A8E0F823C7A7DB00F96EAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A8E10923C7A7DB00F96EAF /* Main.storyboard in Resources */,
+				E1A8E10023C7A7DB00F96EAF /* GameScene.sks in Resources */,
+				E1134E4523C92C0F001CF9AB /* FireParticles.sks in Resources */,
+				E1A8E10B23C7A7DD00F96EAF /* Assets.xcassets in Resources */,
+				E1A8E10E23C7A7DD00F96EAF /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1A8E0F623C7A7DB00F96EAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A8E10423C7A7DB00F96EAF /* GameScene.swift in Sources */,
+				E1A8E10623C7A7DB00F96EAF /* GameViewController.swift in Sources */,
+				E1A8E0FE23C7A7DB00F96EAF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1A8E10723C7A7DB00F96EAF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1A8E10823C7A7DB00F96EAF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1A8E10C23C7A7DD00F96EAF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1A8E10D23C7A7DD00F96EAF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1A8E11023C7A7DD00F96EAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E1A8E11123C7A7DD00F96EAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1A8E11323C7A7DD00F96EAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "Project11 Pachinko/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project11-Pachinko";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E1A8E11423C7A7DD00F96EAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "Project11 Pachinko/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project11-Pachinko";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1A8E0F523C7A7DB00F96EAF /* Build configuration list for PBXProject "Project11 Pachinko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A8E11023C7A7DD00F96EAF /* Debug */,
+				E1A8E11123C7A7DD00F96EAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1A8E11223C7A7DD00F96EAF /* Build configuration list for PBXNativeTarget "Project11 Pachinko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A8E11323C7A7DD00F96EAF /* Debug */,
+				E1A8E11423C7A7DD00F96EAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1A8E0F223C7A7DB00F96EAF /* Project object */;
+}

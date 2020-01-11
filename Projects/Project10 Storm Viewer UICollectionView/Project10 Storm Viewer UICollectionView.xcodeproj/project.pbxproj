@@ -13,18 +13,18 @@
 		E1A8E0CC23C6BDEB00F96EAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0CA23C6BDEB00F96EAF /* Main.storyboard */; };
 		E1A8E0CE23C6BDEC00F96EAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0CD23C6BDEC00F96EAF /* Assets.xcassets */; };
 		E1A8E0D123C6BDEC00F96EAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0CF23C6BDEC00F96EAF /* LaunchScreen.storyboard */; };
-		E1A8E0E323C6C29100F96EAF /* nssl0049.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0D923C6C29100F96EAF /* nssl0049.jpg */; };
-		E1A8E0E423C6C29100F96EAF /* nssl0046.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DA23C6C29100F96EAF /* nssl0046.jpg */; };
-		E1A8E0E523C6C29100F96EAF /* nssl0091.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DB23C6C29100F96EAF /* nssl0091.jpg */; };
-		E1A8E0E623C6C29100F96EAF /* nssl0045.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DC23C6C29100F96EAF /* nssl0045.jpg */; };
-		E1A8E0E723C6C29100F96EAF /* nssl0051.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DD23C6C29100F96EAF /* nssl0051.jpg */; };
-		E1A8E0E823C6C29100F96EAF /* nssl0041.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DE23C6C29100F96EAF /* nssl0041.jpg */; };
-		E1A8E0E923C6C29100F96EAF /* nssl0042.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0DF23C6C29100F96EAF /* nssl0042.jpg */; };
-		E1A8E0EA23C6C29100F96EAF /* nssl0043.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0E023C6C29100F96EAF /* nssl0043.jpg */; };
-		E1A8E0EB23C6C29100F96EAF /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0E123C6C29100F96EAF /* nssl0033.jpg */; };
-		E1A8E0EC23C6C29100F96EAF /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E0E223C6C29100F96EAF /* nssl0034.jpg */; };
 		E1A8E0EE23C6C56A00F96EAF /* StormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8E0ED23C6C56A00F96EAF /* StormCell.swift */; };
 		E1A8E0F023C6CBB400F96EAF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8E0EF23C6CBB400F96EAF /* DetailViewController.swift */; };
+		E1A8E13F23C7AFE000F96EAF /* nssl0049.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13523C7AFE000F96EAF /* nssl0049.jpg */; };
+		E1A8E14023C7AFE000F96EAF /* nssl0046.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13623C7AFE000F96EAF /* nssl0046.jpg */; };
+		E1A8E14123C7AFE000F96EAF /* nssl0091.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13723C7AFE000F96EAF /* nssl0091.jpg */; };
+		E1A8E14223C7AFE000F96EAF /* nssl0045.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13823C7AFE000F96EAF /* nssl0045.jpg */; };
+		E1A8E14323C7AFE000F96EAF /* nssl0051.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13923C7AFE000F96EAF /* nssl0051.jpg */; };
+		E1A8E14423C7AFE000F96EAF /* nssl0041.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13A23C7AFE000F96EAF /* nssl0041.jpg */; };
+		E1A8E14523C7AFE000F96EAF /* nssl0042.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13B23C7AFE000F96EAF /* nssl0042.jpg */; };
+		E1A8E14623C7AFE000F96EAF /* nssl0043.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13C23C7AFE000F96EAF /* nssl0043.jpg */; };
+		E1A8E14723C7AFE000F96EAF /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13D23C7AFE000F96EAF /* nssl0033.jpg */; };
+		E1A8E14823C7AFE000F96EAF /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1A8E13E23C7AFE000F96EAF /* nssl0034.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,18 +36,18 @@
 		E1A8E0CD23C6BDEC00F96EAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A8E0D023C6BDEC00F96EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A8E0D223C6BDEC00F96EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1A8E0D923C6C29100F96EAF /* nssl0049.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0049.jpg; sourceTree = "<group>"; };
-		E1A8E0DA23C6C29100F96EAF /* nssl0046.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0046.jpg; sourceTree = "<group>"; };
-		E1A8E0DB23C6C29100F96EAF /* nssl0091.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0091.jpg; sourceTree = "<group>"; };
-		E1A8E0DC23C6C29100F96EAF /* nssl0045.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0045.jpg; sourceTree = "<group>"; };
-		E1A8E0DD23C6C29100F96EAF /* nssl0051.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0051.jpg; sourceTree = "<group>"; };
-		E1A8E0DE23C6C29100F96EAF /* nssl0041.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0041.jpg; sourceTree = "<group>"; };
-		E1A8E0DF23C6C29100F96EAF /* nssl0042.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0042.jpg; sourceTree = "<group>"; };
-		E1A8E0E023C6C29100F96EAF /* nssl0043.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0043.jpg; sourceTree = "<group>"; };
-		E1A8E0E123C6C29100F96EAF /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
-		E1A8E0E223C6C29100F96EAF /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 		E1A8E0ED23C6C56A00F96EAF /* StormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormCell.swift; sourceTree = "<group>"; };
 		E1A8E0EF23C6CBB400F96EAF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E1A8E13523C7AFE000F96EAF /* nssl0049.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0049.jpg; sourceTree = "<group>"; };
+		E1A8E13623C7AFE000F96EAF /* nssl0046.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0046.jpg; sourceTree = "<group>"; };
+		E1A8E13723C7AFE000F96EAF /* nssl0091.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0091.jpg; sourceTree = "<group>"; };
+		E1A8E13823C7AFE000F96EAF /* nssl0045.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0045.jpg; sourceTree = "<group>"; };
+		E1A8E13923C7AFE000F96EAF /* nssl0051.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0051.jpg; sourceTree = "<group>"; };
+		E1A8E13A23C7AFE000F96EAF /* nssl0041.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0041.jpg; sourceTree = "<group>"; };
+		E1A8E13B23C7AFE000F96EAF /* nssl0042.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0042.jpg; sourceTree = "<group>"; };
+		E1A8E13C23C7AFE000F96EAF /* nssl0043.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0043.jpg; sourceTree = "<group>"; };
+		E1A8E13D23C7AFE000F96EAF /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
+		E1A8E13E23C7AFE000F96EAF /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,24 +89,24 @@
 				E1A8E0CD23C6BDEC00F96EAF /* Assets.xcassets */,
 				E1A8E0CF23C6BDEC00F96EAF /* LaunchScreen.storyboard */,
 				E1A8E0D223C6BDEC00F96EAF /* Info.plist */,
-				E1A8E0D823C6C29100F96EAF /* Content */,
+				E1A8E13423C7AFE000F96EAF /* Content */,
 			);
 			path = "Project10 Storm Viewer UICollectionView";
 			sourceTree = "<group>";
 		};
-		E1A8E0D823C6C29100F96EAF /* Content */ = {
+		E1A8E13423C7AFE000F96EAF /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				E1A8E0D923C6C29100F96EAF /* nssl0049.jpg */,
-				E1A8E0DA23C6C29100F96EAF /* nssl0046.jpg */,
-				E1A8E0DB23C6C29100F96EAF /* nssl0091.jpg */,
-				E1A8E0DC23C6C29100F96EAF /* nssl0045.jpg */,
-				E1A8E0DD23C6C29100F96EAF /* nssl0051.jpg */,
-				E1A8E0DE23C6C29100F96EAF /* nssl0041.jpg */,
-				E1A8E0DF23C6C29100F96EAF /* nssl0042.jpg */,
-				E1A8E0E023C6C29100F96EAF /* nssl0043.jpg */,
-				E1A8E0E123C6C29100F96EAF /* nssl0033.jpg */,
-				E1A8E0E223C6C29100F96EAF /* nssl0034.jpg */,
+				E1A8E13523C7AFE000F96EAF /* nssl0049.jpg */,
+				E1A8E13623C7AFE000F96EAF /* nssl0046.jpg */,
+				E1A8E13723C7AFE000F96EAF /* nssl0091.jpg */,
+				E1A8E13823C7AFE000F96EAF /* nssl0045.jpg */,
+				E1A8E13923C7AFE000F96EAF /* nssl0051.jpg */,
+				E1A8E13A23C7AFE000F96EAF /* nssl0041.jpg */,
+				E1A8E13B23C7AFE000F96EAF /* nssl0042.jpg */,
+				E1A8E13C23C7AFE000F96EAF /* nssl0043.jpg */,
+				E1A8E13D23C7AFE000F96EAF /* nssl0033.jpg */,
+				E1A8E13E23C7AFE000F96EAF /* nssl0034.jpg */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -169,18 +169,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A8E0E423C6C29100F96EAF /* nssl0046.jpg in Resources */,
-				E1A8E0EB23C6C29100F96EAF /* nssl0033.jpg in Resources */,
-				E1A8E0E723C6C29100F96EAF /* nssl0051.jpg in Resources */,
-				E1A8E0E523C6C29100F96EAF /* nssl0091.jpg in Resources */,
-				E1A8E0EA23C6C29100F96EAF /* nssl0043.jpg in Resources */,
-				E1A8E0EC23C6C29100F96EAF /* nssl0034.jpg in Resources */,
-				E1A8E0E323C6C29100F96EAF /* nssl0049.jpg in Resources */,
-				E1A8E0E823C6C29100F96EAF /* nssl0041.jpg in Resources */,
-				E1A8E0E923C6C29100F96EAF /* nssl0042.jpg in Resources */,
+				E1A8E14023C7AFE000F96EAF /* nssl0046.jpg in Resources */,
+				E1A8E14723C7AFE000F96EAF /* nssl0033.jpg in Resources */,
+				E1A8E14323C7AFE000F96EAF /* nssl0051.jpg in Resources */,
+				E1A8E14123C7AFE000F96EAF /* nssl0091.jpg in Resources */,
+				E1A8E14623C7AFE000F96EAF /* nssl0043.jpg in Resources */,
+				E1A8E14823C7AFE000F96EAF /* nssl0034.jpg in Resources */,
+				E1A8E13F23C7AFE000F96EAF /* nssl0049.jpg in Resources */,
+				E1A8E14423C7AFE000F96EAF /* nssl0041.jpg in Resources */,
+				E1A8E14523C7AFE000F96EAF /* nssl0042.jpg in Resources */,
 				E1A8E0D123C6BDEC00F96EAF /* LaunchScreen.storyboard in Resources */,
 				E1A8E0CE23C6BDEC00F96EAF /* Assets.xcassets in Resources */,
-				E1A8E0E623C6C29100F96EAF /* nssl0045.jpg in Resources */,
+				E1A8E14223C7AFE000F96EAF /* nssl0045.jpg in Resources */,
 				E1A8E0CC23C6BDEB00F96EAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
