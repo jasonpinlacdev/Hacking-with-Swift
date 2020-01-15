@@ -17,11 +17,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         setup()
         startGame()
-        
     }
-    
-    
-    
     
     func setup() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restart))
@@ -39,6 +35,7 @@ class ViewController: UITableViewController {
     func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
+        load()
         tableView.reloadData()
     }
     
@@ -64,6 +61,7 @@ class ViewController: UITableViewController {
                 if isReal(loweredAnswer) {
                     if isLargerThanTwoLetters(loweredAnswer) {
                         usedWords.insert(loweredAnswer, at: 0)
+                        save()
                         let indexPath = IndexPath(row: 0, section: 0)
                         tableView.insertRows(at: [indexPath], with: .automatic)
                         return
@@ -121,7 +119,10 @@ class ViewController: UITableViewController {
     
     
     @objc func restart() {
-        startGame()
+         title = allWords.randomElement()
+         usedWords.removeAll(keepingCapacity: true)
+         save()
+         tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,6 +133,39 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usedWords.count
+    }
+    
+    func save() {
+        let encoder = JSONEncoder()
+        if let titleWord = title {
+            if let titleData = try? encoder.encode(titleWord) {
+                let defaults = UserDefaults.standard
+                defaults.set(titleData, forKey: "titleWord")
+            }
+            if let usedWordsData = try? encoder.encode(usedWords) {
+                let defaults = UserDefaults.standard
+                defaults.set(usedWordsData, forKey: "usedWords")
+            }
+        }
+    }
+    
+    func load() {
+        let defaults = UserDefaults.standard
+        let decoder = JSONDecoder()
+        if let savedTitleData = defaults.object(forKey: "titleWord") as? Data {
+            do {
+                title = try decoder.decode(String.self, from: savedTitleData)
+            } catch {
+                print("Failed to load title")
+            }
+        }
+        if let usedWordsData = defaults.object(forKey: "usedWords") as? Data {
+            do {
+                usedWords = try decoder.decode([String].self, from: usedWordsData)
+            } catch {
+                print("Failed to load used words")
+            }
+        }
     }
     
     
