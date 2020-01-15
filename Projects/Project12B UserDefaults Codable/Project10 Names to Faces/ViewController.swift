@@ -11,17 +11,11 @@ import UIKit
 class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var people = [Person]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
-            navigationItem.leftBarButtonItems = [addButton, cameraButton]
-        } else {
-            navigationItem.leftBarButtonItem = addButton
-        }
+        load()
+        setupNavigationItems()
     }
     
     @objc func addNewPerson() {
@@ -40,23 +34,24 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-         guard let image = info[.editedImage] as? UIImage else { return }
-         let imageName = UUID().uuidString
-         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-         if let jpegData = image.jpegData(compressionQuality: 0.8)  {
-             try? jpegData.write(to: imagePath)
-         }
-         let person = Person(name: "Unknown", image: imageName)
-         people.append(person)
-         collectionView.reloadData()
-         dismiss(animated: true)
-     }
-     
-     // function to get applications document directory
-     func getDocumentsDirectory() -> URL {
-         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-         return paths[0]
-     }
+        guard let image = info[.editedImage] as? UIImage else { return }
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+        if let jpegData = image.jpegData(compressionQuality: 0.8)  {
+            try? jpegData.write(to: imagePath)
+        }
+        let person = Person(name: "Unknown", image: imageName)
+        people.append(person)
+        save()
+        collectionView.reloadData()
+        dismiss(animated: true)
+    }
+    
+    // function to get applications document directory
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Person", for: indexPath) as? PersonCell else {
@@ -74,8 +69,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return people.count
-       }
+        return people.count
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let ac = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .alert)
@@ -98,6 +93,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             [weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             self?.people[indexPath.item].name = newName
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -109,9 +105,43 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         ac.addAction(UIAlertAction(title: "Yes", style: .default) {
             [weak self] _ in
             self?.people.remove(at: indexPath.item)
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    func load() {
+        // Load people as an array from Data saved in UserDefaults
+        let defaults = UserDefaults.standard
+        if let savedData = defaults.object(forKey: "people") as? Data {
+            let decoder = JSONDecoder()
+            do {
+                people = try decoder.decode([Person].self, from: savedData)
+            } catch {
+                print("Failed to load people")
+            }
+        }
+    }
+    
+    func save() {
+        let encoder = JSONEncoder()
+        if let savedData = try? encoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        } else {
+            print("Failed to save people")
+        }
+    }
+    
+    func setupNavigationItems() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
+            navigationItem.leftBarButtonItems = [addButton, cameraButton]
+        } else {
+            navigationItem.leftBarButtonItem = addButton
+        }
     }
 }

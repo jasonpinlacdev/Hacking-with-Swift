@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E1C6FCA923CE6698002A3118 /* Project12 UserDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project12 UserDefaults.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1C6FCA923CE6698002A3118 /* Project12B UserDefaults Codable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project12B UserDefaults Codable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C6FCAC23CE6698002A3118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1C6FCAE23CE6698002A3118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E1C6FCB023CE6698002A3118 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		E1C6FCAA23CE6698002A3118 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1C6FCA923CE6698002A3118 /* Project12 UserDefaults.app */,
+				E1C6FCA923CE6698002A3118 /* Project12B UserDefaults Codable.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +90,7 @@
 			);
 			name = "Project10 Names to Faces";
 			productName = "Project10 Names to Faces";
-			productReference = E1C6FCA923CE6698002A3118 /* Project12 UserDefaults.app */;
+			productReference = E1C6FCA923CE6698002A3118 /* Project12B UserDefaults Codable.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -299,8 +299,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project10-Names-to-Faces";
-				PRODUCT_NAME = "Project12 UserDefaults";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project12B-UserDefaults-Codable";
+				PRODUCT_NAME = "Project12B UserDefaults Codable";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -317,8 +317,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project10-Names-to-Faces";
-				PRODUCT_NAME = "Project12 UserDefaults";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project12B-UserDefaults-Codable";
+				PRODUCT_NAME = "Project12B UserDefaults Codable";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

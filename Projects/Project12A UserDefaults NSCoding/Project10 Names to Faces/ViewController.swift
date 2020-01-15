@@ -23,6 +23,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             navigationItem.leftBarButtonItem = addButton
         }
         
+        // Take the saved data and read it from UserDefaults. The convert it to person array and set it
         let defaults = UserDefaults.standard
         if let savedPeopleData = defaults.object(forKey: "people") as? Data {
             if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeopleData) as? [Person] {
