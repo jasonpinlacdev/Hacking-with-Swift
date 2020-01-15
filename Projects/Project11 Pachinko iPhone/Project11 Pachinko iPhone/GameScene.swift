@@ -88,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         resetLabel.text = "Reset"
         resetLabel.fontSize = 20
         resetLabel.horizontalAlignmentMode = .left
+        resetLabel.fontColor = .systemRed
         resetLabel.position = CGPoint(x: 20, y: 866)
         addChild(resetLabel)
         
@@ -107,16 +108,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         leftLabel = SKLabelNode(fontNamed: "Chalkduster")
         leftLabel.text = "-1"
+        leftLabel.fontColor = .systemRed
         leftLabel.position = CGPoint(x: 63.5, y: 50)
         addChild(leftLabel)
         
         middleLabel = SKLabelNode(fontNamed: "Chalkduster")
         middleLabel.text = "+10"
+        middleLabel.fontColor = .systemGreen
         middleLabel.position = CGPoint(x: 207, y: 50)
         addChild(middleLabel)
         
         rightLabel = SKLabelNode(fontNamed: "Chalkduster")
         rightLabel.text = "-1"
+        rightLabel.fontColor = .systemRed
         rightLabel.position = CGPoint(x: 350.5, y: 50)
         addChild(rightLabel)
     }
@@ -143,7 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             glow = SKSpriteNode(imageNamed: "slotGlowBad")
         }
         
-        slot.size = CGSize(width: 63, height: 2)
+        slot.size = CGSize(width: 63, height: 3)
         slot.position = position
         slot.physicsBody = SKPhysicsBody(rectangleOf: slot.size)
         slot.physicsBody?.isDynamic = false
