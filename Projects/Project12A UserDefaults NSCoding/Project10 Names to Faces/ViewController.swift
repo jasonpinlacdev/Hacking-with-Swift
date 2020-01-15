@@ -14,13 +14,20 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
             navigationItem.leftBarButtonItems = [addButton, cameraButton]
         } else {
             navigationItem.leftBarButtonItem = addButton
+        }
+        
+        let defaults = UserDefaults.standard
+        if let savedPeopleData = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeopleData) as? [Person] {
+                people = decodedPeople
+            }
         }
     }
     
@@ -48,6 +55,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
          }
          let person = Person(name: "Unknown", image: imageName)
          people.append(person)
+         save()
          collectionView.reloadData()
          dismiss(animated: true)
      }
@@ -98,6 +106,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             [weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             self?.people[indexPath.item].name = newName
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -109,9 +118,18 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         ac.addAction(UIAlertAction(title: "Yes", style: .default) {
             [weak self] _ in
             self?.people.remove(at: indexPath.item)
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    func save() {
+        // take the object graph and turn it into a data object. then set the data object to UserDefaults
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
     }
 }
