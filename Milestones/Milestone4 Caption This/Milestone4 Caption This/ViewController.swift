@@ -29,6 +29,34 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         present(picker, animated: true)
     }
     
+    func save() {
+        let encoder = JSONEncoder()
+        if let pictureData = try? encoder.encode(pictures) {
+            let defaults = UserDefaults.standard
+            defaults.set(pictureData, forKey: "pictures")
+        } else{
+            print("Save failed")
+        }
+    }
+    
+    func load() {
+        // read from user defaults as data
+        let defaults = UserDefaults.standard
+        if let data = defaults.object(forKey: "pictures") as? Data {
+            let decoder = JSONDecoder()
+            do {
+                pictures = try decoder.decode([Picture].self, from: data)
+            } catch {
+                print("Load failed")
+            }
+        }
+    }
+    
+    func getApplicationDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         let picture = pictures[indexPath.row]
@@ -70,34 +98,6 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
             self?.tableView.reloadData()
         })
         present(ac, animated: true)
-    }
-    
-    func getApplicationDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    func save() {
-        let encoder = JSONEncoder()
-        if let pictureData = try? encoder.encode(pictures) {
-            let defaults = UserDefaults.standard
-            defaults.set(pictureData, forKey: "pictures")
-        } else{
-            print("Save failed")
-        }
-    }
-    
-    func load() {
-        // read from user defaults as data
-        let defaults = UserDefaults.standard
-        if let data = defaults.object(forKey: "pictures") as? Data {
-            let decoder = JSONDecoder()
-            do {
-                pictures = try decoder.decode([Picture].self, from: data)
-            } catch {
-                print("Load failed")
-            }
-        }
     }
     
 }
