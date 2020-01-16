@@ -52,6 +52,7 @@ class ViewController: UITableViewController {
         
         let pictureName = pictures[indexPath.row]
         cell.textLabel?.text = pictureName
+        cell.imageView?.image = UIImage(named: pictureName)
         
         if let viewCount = picturesDict[pictureName] {
             cell.detailTextLabel?.text = "Number of views: \(viewCount)"
