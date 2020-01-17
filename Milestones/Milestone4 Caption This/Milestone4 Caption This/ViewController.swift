@@ -99,6 +99,5 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         })
         present(ac, animated: true)
     }
-    
 }
 

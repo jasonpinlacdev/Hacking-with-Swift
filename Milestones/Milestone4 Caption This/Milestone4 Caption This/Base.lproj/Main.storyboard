@@ -53,20 +53,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-ng-8uK">
-                                <rect key="frame" x="10" y="44" width="394" height="634"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-ng-8uK">
+                                <rect key="frame" x="10" y="44" width="394" height="818"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-rx-0xB">
-                                <rect key="frame" x="10" y="686" width="394" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-rx-0xB">
+                                <rect key="frame" x="20" y="737" width="374" height="114"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ylh-rx-0xB" firstAttribute="top" secondItem="sbv-DO-VYI" secondAttribute="top" constant="693" id="JuX-dt-mrh"/>
+                            <constraint firstItem="7a9-ng-8uK" firstAttribute="bottom" secondItem="sbv-DO-VYI" secondAttribute="bottom" id="Oke-cU-vtt"/>
+                            <constraint firstItem="ylh-rx-0xB" firstAttribute="leading" secondItem="IIw-qY-ThF" secondAttribute="leadingMargin" id="atS-bo-0cE"/>
+                            <constraint firstItem="7a9-ng-8uK" firstAttribute="top" secondItem="sbv-DO-VYI" secondAttribute="top" id="lBd-yT-3Cc"/>
+                            <constraint firstItem="ylh-rx-0xB" firstAttribute="trailing" secondItem="IIw-qY-ThF" secondAttribute="trailingMargin" id="nWM-zj-eDT"/>
+                            <constraint firstItem="7a9-ng-8uK" firstAttribute="leading" secondItem="sbv-DO-VYI" secondAttribute="leading" constant="10" id="sZp-ON-yK1"/>
+                            <constraint firstItem="7a9-ng-8uK" firstAttribute="centerX" secondItem="ylh-rx-0xB" secondAttribute="centerX" id="xiR-gw-fEm"/>
+                            <constraint firstItem="sbv-DO-VYI" firstAttribute="bottom" secondItem="ylh-rx-0xB" secondAttribute="bottom" constant="11" id="y93-fH-AfR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sbv-DO-VYI"/>
                     </view>
                     <connections>

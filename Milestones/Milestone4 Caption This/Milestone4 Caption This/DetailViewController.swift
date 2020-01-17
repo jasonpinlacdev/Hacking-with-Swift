@@ -17,12 +17,10 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let selectedPicture = selectedPicture else { return }
         imageView.image = UIImage(contentsOfFile: getApplicationDocumentsDirectory().appendingPathComponent(selectedPicture.imageName).path)
         quoteLabel.text = selectedPicture.quote
-        quoteLabel.layer.borderColor = UIColor.white.cgColor
-        quoteLabel.layer.borderWidth = 3
+        quoteLabel.layer.backgroundColor = UIColor(white: 0.0, alpha: 0.3).cgColor
         quoteLabel.layer.masksToBounds = true
         quoteLabel.layer.cornerRadius = 30
     }
