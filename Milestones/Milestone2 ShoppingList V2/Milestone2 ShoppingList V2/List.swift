@@ -58,6 +58,5 @@ class List: Codable {
             }
         }
     }
-    
-    
+
 }

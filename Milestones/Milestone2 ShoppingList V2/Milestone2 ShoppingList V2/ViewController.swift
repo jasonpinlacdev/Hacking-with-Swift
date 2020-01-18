@@ -42,7 +42,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func shareList() {
-        guard !shoppingList.items.isEmpty else {
+        if shoppingList.items.isEmpty {
             let ac = UIAlertController(title: "Nothing to share", message: "Your list is currently empty.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
             present(ac, animated: true)
@@ -61,6 +61,12 @@ class ViewController: UITableViewController {
     }
     
     @objc func deleteList() {
+        if shoppingList.items.isEmpty {
+            let ac = UIAlertController(title: "Nothing to delete", message: "Your list is currently empty.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(ac, animated: true)
+            return
+        }
         let ac = UIAlertController(title: "Delete List?", message: "Are you sure you want to delete your current list?", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Confirm", style: .default) {
             [weak self] _ in
