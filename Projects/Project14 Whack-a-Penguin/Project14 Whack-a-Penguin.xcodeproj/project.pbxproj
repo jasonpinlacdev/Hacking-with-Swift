@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1742DE523D7F3B900F36E19 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = E1742DE323D7F38E00F36E19 /* whack.caf */; };
+		E1742DE623D7F3BD00F36E19 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = E1742DE423D7F38E00F36E19 /* whackBad.caf */; };
+		E1742DE823D7F46D00F36E19 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1742DE723D7F46D00F36E19 /* gameOver.mp3 */; };
 		E1AC313C23D7AFAB002B1DAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC313B23D7AFAB002B1DAC /* AppDelegate.swift */; };
 		E1AC313E23D7AFAB002B1DAC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E1AC313D23D7AFAB002B1DAC /* GameScene.sks */; };
 		E1AC314223D7AFAB002B1DAC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC314123D7AFAB002B1DAC /* GameScene.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1742DE323D7F38E00F36E19 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		E1742DE423D7F38E00F36E19 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
+		E1742DE723D7F46D00F36E19 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		E1AC313823D7AFAB002B1DAC /* Project14 Whack-a-Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project14 Whack-a-Penguin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AC313B23D7AFAB002B1DAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1AC313D23D7AFAB002B1DAC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -27,8 +33,6 @@
 		E1AC314823D7AFAD002B1DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1AC314B23D7AFAD002B1DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1AC314D23D7AFAD002B1DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1AC315323D7B040002B1DAC /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
-		E1AC315423D7B040002B1DAC /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
 		E1AC315523D7B38B002B1DAC /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,8 +75,9 @@
 				E1AC314823D7AFAD002B1DAC /* Assets.xcassets */,
 				E1AC314A23D7AFAD002B1DAC /* LaunchScreen.storyboard */,
 				E1AC314D23D7AFAD002B1DAC /* Info.plist */,
-				E1AC315323D7B040002B1DAC /* whack.caf */,
-				E1AC315423D7B040002B1DAC /* whackBad.caf */,
+				E1742DE323D7F38E00F36E19 /* whack.caf */,
+				E1742DE423D7F38E00F36E19 /* whackBad.caf */,
+				E1742DE723D7F46D00F36E19 /* gameOver.mp3 */,
 			);
 			path = "Project14 Whack-a-Penguin";
 			sourceTree = "<group>";
@@ -136,9 +141,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AC314723D7AFAB002B1DAC /* Main.storyboard in Resources */,
+				E1742DE523D7F3B900F36E19 /* whack.caf in Resources */,
+				E1742DE823D7F46D00F36E19 /* gameOver.mp3 in Resources */,
 				E1AC313E23D7AFAB002B1DAC /* GameScene.sks in Resources */,
 				E1AC314923D7AFAD002B1DAC /* Assets.xcassets in Resources */,
 				E1AC314C23D7AFAD002B1DAC /* LaunchScreen.storyboard in Resources */,
+				E1742DE623D7F3BD00F36E19 /* whackBad.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -155,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         glow.size = CGSize(width: 100, height: 100)
         glow.position = position
-        let spin  = SKAction.rotate(byAngle: CGFloat.pi, duration: 10)
+        let spin = SKAction.rotate(byAngle: CGFloat.pi, duration: 10)
         let spinForever = SKAction.repeatForever(spin)
         glow.run(spinForever)
         addChild(glow)
