@@ -42,7 +42,7 @@ class WhackSlot: SKNode {
     func show(for uptime: Double) {
         if isVisible { return }
         
-        charNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.25))
+        charNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.20))
         isVisible = true
         isHit = false
         
@@ -54,21 +54,21 @@ class WhackSlot: SKNode {
             charNode.name = "charEnemy"
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + (uptime * 3.5)) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + (uptime * 5.0)) { [weak self] in
             self?.hide()
         }
     }
     
     func hide() {
         if !isVisible { return }
-        charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.25))
+        charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.20))
         isVisible = false
     }
     
     func hit() {
         isHit = true
         isVisible = false
-        charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.25))
+        charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.025))
     }
     
 }

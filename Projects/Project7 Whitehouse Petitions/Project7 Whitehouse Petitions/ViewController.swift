@@ -41,7 +41,7 @@ class ViewController: UITableViewController {
     
     func setup() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
-        let searchButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(search))
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
         let resetButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
         navigationItem.rightBarButtonItems = [searchButton, resetButton]
     }

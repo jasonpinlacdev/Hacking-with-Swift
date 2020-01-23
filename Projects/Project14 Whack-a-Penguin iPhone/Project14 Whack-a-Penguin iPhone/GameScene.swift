@@ -11,8 +11,13 @@ import GameplayKit
 class GameScene: SKScene {
     
     var slots = [WhackSlot]()
-    var upTime = 0.5
+    var upTime = 0.7
     
+    var highScore = 0 {
+        didSet {
+            highScoreLabel.text = "High Score: \(highScore)"
+        }
+    }
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -27,6 +32,7 @@ class GameScene: SKScene {
     var timeLabel: SKLabelNode!
     var restartLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
+    var highScoreLabel: SKLabelNode!
     
     
     override func didMove(to view: SKView) {
@@ -60,11 +66,19 @@ class GameScene: SKScene {
         scoreLabel.fontSize = 36
         addChild(scoreLabel)
         
+        highScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        highScoreLabel.position = CGPoint(x: 250, y: 15)
+        highScoreLabel.horizontalAlignmentMode = .left
+        highScoreLabel.text = "High Score: \(highScore)"
+        highScoreLabel.fontSize = 36
+        addChild(highScoreLabel)
+        
         for i in 0..<4 { createSlot(at: CGPoint(x: 110 + (i * 170), y: 260)) }
         for i in 0..<4 { createSlot(at: CGPoint(x: 190 + (i * 170), y: 200)) }
         for i in 0..<4 { createSlot(at: CGPoint(x: 110 + (i * 170), y: 140)) }
         for i in 0..<4 { createSlot(at: CGPoint(x: 190 + (i * 170), y: 80)) }
         
+        load()
         startGame()
         startGameTimer()
     }
@@ -101,7 +115,7 @@ class GameScene: SKScene {
     
     func createEnemy() {
         if time == 0 {
-            for slot in slots { slot.hide() }
+            for slot in slots { slot.hide(); slot.isHidden = true }
             timeLabel.isHidden = true
             restartLabel.isHidden = false
             let gameOver = SKSpriteNode(imageNamed: "gameOver")
@@ -109,6 +123,7 @@ class GameScene: SKScene {
             gameOver.zPosition = 1
             addChild(gameOver)
             run(SKAction.playSoundFileNamed("gameOver.mp3", waitForCompletion: false))
+            if score > highScore { highScore = score; save() }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
                 self?.removeChildren(in: [gameOver])
                 self?.startGame()
@@ -116,15 +131,15 @@ class GameScene: SKScene {
             return
         }
         
-        upTime *= 0.985
+        upTime *= 0.98
+        print(upTime)
         slots.shuffle()
         
         slots[0].show(for: upTime)
-        
-        if Int.random(in: 0...12) > 4 {slots[1].show(for: upTime)}
-        if Int.random(in: 0...12) > 8 {slots[1].show(for: upTime)}
-        if Int.random(in: 0...12) > 10 {slots[1].show(for: upTime)}
-        if Int.random(in: 0...12) > 11 {slots[1].show(for: upTime)}
+        if Int.random(in: 0...12) > 3 {slots[1].show(for: upTime)}
+        if Int.random(in: 0...12) > 6 {slots[2].show(for: upTime)}
+        if Int.random(in: 0...12) > 8 {slots[3].show(for: upTime)}
+        if Int.random(in: 0...12) > 10 {slots[4].show(for: upTime)}
         
         let minDelay = upTime / 2.0
         let maxDelay = upTime * 2.0
@@ -138,9 +153,10 @@ class GameScene: SKScene {
     func startGame() {
         score = 0
         time = 31
-        upTime = 0.5
+        upTime = 0.7
         timeLabel.isHidden = false
         restartLabel.isHidden = true
+        for slot in slots { slot.isHidden = false }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.createEnemy()
         }
@@ -150,7 +166,39 @@ class GameScene: SKScene {
         let wait = SKAction.wait(forDuration: 1.0)
         let countDown = SKAction.run { [weak self] in self?.time -= 1 }
         let sequence = SKAction.sequence([wait, countDown])
-        run(SKAction.repeatForever(sequence))
+        DispatchQueue.global(qos: .default).async { [weak self] in
+            self?.run(SKAction.repeatForever(sequence))
+        }
+        
+    }
+    
+    
+    
+    
+    func save() {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            let encoder = JSONEncoder()
+            if let saveData = try? encoder.encode(self?.highScore) {
+                let defaults = UserDefaults.standard
+                defaults.set(saveData, forKey: "highScore")
+            } else {
+                print("Failed to save data")
+            }
+        }
+    }
+    
+    func load() {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            let defaults = UserDefaults.standard
+            if let savedData = defaults.object(forKey: "highScore") as? Data {
+                let decoder = JSONDecoder()
+                do {
+                    self?.highScore = try decoder.decode(Int.self, from: savedData)
+                } catch {
+                    print("Failed to load data")
+                }
+            }
+        }
     }
     
 }
