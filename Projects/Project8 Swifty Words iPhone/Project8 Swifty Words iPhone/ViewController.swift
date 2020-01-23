@@ -158,14 +158,15 @@ class ViewController: UIViewController {
     @objc func letterButtonTapped(_ sender: UIButton) {
         if let letters = sender.titleLabel?.text {
             currentAnswerTextField.text = currentAnswerTextField.text?.appending(letters)
-            sender.isHidden = true
+//            button.isHidden = true
+            disableButton(button: sender)
             activatedButtons.append(sender)
         }
     }
     
     @objc func clearButtonTapped(_ sender: UIButton) {
         for button in activatedButtons {
-            button.isHidden = false
+            enableButton(button: button)
         }
         activatedButtons.removeAll()
         currentAnswerTextField.text = ""
@@ -187,7 +188,8 @@ class ViewController: UIViewController {
                     
                     self?.solutions.removeAll(keepingCapacity: true)
                     for button in self?.letterButtons ?? [] {
-                        button.isHidden = false
+//                        button.isHidden = false
+                        self?.enableButton(button: button)
                     }
                 }
             })
@@ -210,7 +212,7 @@ class ViewController: UIViewController {
             present(ac, animated: true)
             score -= 1
             for button in activatedButtons {
-                button.isHidden = false
+                enableButton(button: button)
             }
             activatedButtons.removeAll()
             currentAnswerTextField.text = ""
@@ -266,4 +268,23 @@ class ViewController: UIViewController {
     }
     
     
+    
+    func disableButton(button: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+            button.alpha = 0.1
+        }) { finished in
+            button.isEnabled = false
+        }
+    }
+    
+    
+    func enableButton(button: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+            button.alpha = 1.0
+        }) { finished in
+            button.isEnabled = true
+        }
+        
+        
+    }
 }

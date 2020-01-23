@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.25, initialSpringVelocity: 5, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        })
+        
         if sender.tag == toGuess {
             score += 100
             let ac = UIAlertController(title: "Correct", message: "Nice one!\n+100 points", preferredStyle: .alert)
@@ -56,6 +60,10 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
             present(ac, animated: true)
         }
+        
+        UIView.animate(withDuration: 1, delay: 0.25, usingSpringWithDamping: 0.25, initialSpringVelocity: 5, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
     }
     
     func setup() {
@@ -87,6 +95,8 @@ class ViewController: UIViewController {
         present(ac, animated: true)
     }
     
+    
+    
     func reset() {
         if score > highScore {
             highScore = score
@@ -115,6 +125,8 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
     
     func save() {
         let encoder = JSONEncoder()
