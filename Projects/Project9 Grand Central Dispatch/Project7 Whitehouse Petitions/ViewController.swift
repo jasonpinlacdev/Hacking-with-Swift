@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var petitions = [Petition]()
-    var allPetitions = [Petition]()
+    var originalPetitions = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class ViewController: UITableViewController {
         // data is a fundamental type that holds binary data. its like String and Int
         let decoder = JSONDecoder()
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: data) {
-            allPetitions = jsonPetitions.results
-            petitions = allPetitions
+            originalPetitions = jsonPetitions.results
+            petitions = originalPetitions
             DispatchQueue.main.async {
                 [weak self] in
                 self?.tableView.reloadData()
@@ -81,7 +81,7 @@ class ViewController: UITableViewController {
             self?.petitions.removeAll(keepingCapacity: true)
             
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                for petition in self?.allPetitions ?? [] {
+                for petition in self?.originalPetitions ?? [] {
                     if petition.title.contains(searchWord) || petition.body.contains(searchWord) {
                         self?.petitions.append(petition)
                     }
@@ -98,7 +98,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func reset() {
-        petitions = allPetitions
+        petitions = originalPetitions
         tableView.reloadData()
     }
     

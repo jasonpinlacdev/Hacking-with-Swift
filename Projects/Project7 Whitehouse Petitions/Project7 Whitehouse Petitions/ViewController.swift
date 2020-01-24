@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var petitions = [Petition]()
-    var allPetitions = [Petition]()
+    var originalPetitions = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class ViewController: UITableViewController {
             guard let searchWord = ac?.textFields?[0].text else { return }
             self?.petitions.removeAll(keepingCapacity: true)
             
-            for petition in self?.allPetitions ?? [] {
+            for petition in self?.originalPetitions ?? [] {
                 if petition.title.contains(searchWord) || petition.body.contains(searchWord) {
                     self?.petitions.append(petition)
                 }
@@ -69,7 +69,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func reset() {
-        petitions = allPetitions
+        petitions = originalPetitions
         tableView.reloadData()
     }
     
@@ -84,8 +84,8 @@ class ViewController: UITableViewController {
         let decoder = JSONDecoder()
         
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: data) {
-            allPetitions = jsonPetitions.results
-            petitions = allPetitions
+            originalPetitions = jsonPetitions.results
+            petitions = originalPetitions
             tableView.reloadData()
         }
     }
