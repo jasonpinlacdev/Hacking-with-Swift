@@ -114,7 +114,7 @@ class GameScene: SKScene {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
             self?.checkAndSaveHighScore()
-            self?.gameTime = 10
+            self?.gameTime = 30
             self?.score = 0
             self?.startNewGame()
         }
