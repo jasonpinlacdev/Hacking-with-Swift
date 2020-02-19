@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		E19F01C323FAF51200F0C7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F01C223FAF51200F0C7EC /* AppDelegate.swift */; };
 		E19F01C523FAF51200F0C7EC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E19F01C423FAF51200F0C7EC /* GameScene.sks */; };
-		E19F01C723FAF51200F0C7EC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E19F01C623FAF51200F0C7EC /* Actions.sks */; };
 		E19F01C923FAF51200F0C7EC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F01C823FAF51200F0C7EC /* GameScene.swift */; };
 		E19F01CB23FAF51200F0C7EC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F01CA23FAF51200F0C7EC /* GameViewController.swift */; };
 		E19F01CE23FAF51200F0C7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19F01CC23FAF51200F0C7EC /* Main.storyboard */; };
 		E19F01D023FAF51400F0C7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E19F01CF23FAF51400F0C7EC /* Assets.xcassets */; };
 		E19F01D323FAF51400F0C7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19F01D123FAF51400F0C7EC /* LaunchScreen.storyboard */; };
+		E19F01DC23FAF52D00F0C7EC /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = E19F01DA23FAF52D00F0C7EC /* explode.sks */; };
+		E19F01DD23FAF52D00F0C7EC /* fuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = E19F01DB23FAF52D00F0C7EC /* fuse.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E19F01BF23FAF51200F0C7EC /* Project20 Fireworks Night.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project20 Fireworks Night.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19F01C223FAF51200F0C7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E19F01C423FAF51200F0C7EC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		E19F01C623FAF51200F0C7EC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		E19F01C823FAF51200F0C7EC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E19F01CA23FAF51200F0C7EC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E19F01CD23FAF51200F0C7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E19F01CF23FAF51400F0C7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E19F01D223FAF51400F0C7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E19F01D423FAF51400F0C7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E19F01DA23FAF52D00F0C7EC /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explode.sks; sourceTree = "<group>"; };
+		E19F01DB23FAF52D00F0C7EC /* fuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fuse.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +64,14 @@
 			children = (
 				E19F01C223FAF51200F0C7EC /* AppDelegate.swift */,
 				E19F01C423FAF51200F0C7EC /* GameScene.sks */,
-				E19F01C623FAF51200F0C7EC /* Actions.sks */,
 				E19F01C823FAF51200F0C7EC /* GameScene.swift */,
 				E19F01CA23FAF51200F0C7EC /* GameViewController.swift */,
 				E19F01CC23FAF51200F0C7EC /* Main.storyboard */,
 				E19F01CF23FAF51400F0C7EC /* Assets.xcassets */,
 				E19F01D123FAF51400F0C7EC /* LaunchScreen.storyboard */,
 				E19F01D423FAF51400F0C7EC /* Info.plist */,
+				E19F01DA23FAF52D00F0C7EC /* explode.sks */,
+				E19F01DB23FAF52D00F0C7EC /* fuse.sks */,
 			);
 			path = "Project20 Fireworks Night";
 			sourceTree = "<group>";
@@ -135,7 +138,8 @@
 				E19F01C523FAF51200F0C7EC /* GameScene.sks in Resources */,
 				E19F01D023FAF51400F0C7EC /* Assets.xcassets in Resources */,
 				E19F01D323FAF51400F0C7EC /* LaunchScreen.storyboard in Resources */,
-				E19F01C723FAF51200F0C7EC /* Actions.sks in Resources */,
+				E19F01DD23FAF52D00F0C7EC /* fuse.sks in Resources */,
+				E19F01DC23FAF52D00F0C7EC /* explode.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project20-Fireworks-Night";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Project20-Fireworks-Night";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
