@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import UserNotifications
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
@@ -23,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        UNUserNotificationCenter.current().delegate = self
         setup()
         askQuestion()
     }
@@ -68,7 +69,10 @@ class ViewController: UIViewController {
     
     func setup() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score", style: .done, target: self, action: #selector(showScore))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Question", style: .done, target: self, action: #selector(showQuestion))
+        let question = UIBarButtonItem(title: "Question", style: .done, target: self, action: #selector(showQuestion))
+        let notification = UIBarButtonItem(title: "Notification", style: .done, target: self, action: #selector(registerLocalNotification))
+        navigationItem.leftBarButtonItems = [notification, question]
+        
         button1.layer.borderColor = UIColor.gray.cgColor
         button1.layer.borderWidth = 1
         button1.layer.cornerRadius = 15
@@ -150,5 +154,74 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
+    @objc func registerLocalNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) {
+            [weak self] (granted, error) in
+            if granted {
+                self?.scheduleLocalNotification()
+                print("Permission for local notifications granted.")
+            } else {
+                print("Permission for local notifications denied.")
+            }
+        }
+    }
+    
+    func scheduleLocalNotification() {
+        registerCategories()
+        let center = UNUserNotificationCenter.current()
+        
+        // content - data
+        let content = UNMutableNotificationContent()
+        content.title = "Guess the Flag Daily Reminder"
+        content.body = "Hey! Do you want to play your daily game of Guess the Flag and see if you can set a new high score?"
+        content.categoryIdentifier = "game"
+        content.sound = UNNotificationSound.default
+        
+        // trigger - timing
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        // request - content and trigger
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+        print("Daily reminder scheduled")
+    }
+    
+    func registerCategories() {
+        let center = UNUserNotificationCenter.current()
+        
+        // actions
+        let turnOffNotification = UNNotificationAction(identifier: "off", title: "Turn off notifications", options: .foreground)
+        
+        // category
+        let category = UNNotificationCategory(identifier: "game", actions: [turnOffNotification], intentIdentifiers: [], options: [])
+        center.setNotificationCategories([category])
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "off":
+            let center = UNUserNotificationCenter.current()
+            center.removeAllPendingNotificationRequests()
+            center.removeAllDeliveredNotifications()
+            
+            let ac = UIAlertController(title: "Turn off Notifications", message: "Your daily notification has been turned off and all game notifications cleared.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(ac, animated: true)
+        default:
+            break
+        }
+        // you must call the completion handler whe you're done
+        completionHandler()
+    }
+    
+    
 }
 

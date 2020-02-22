@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Project2 Guess The Flag
+//  Project21 Local Notifications
 //
-//  Created by Jason Pinlac on 12/11/19.
-//  Copyright © 2019 Jason Pinlac. All rights reserved.
+//  Created by Jason Pinlac on 2/19/20.
+//  Copyright © 2020 Jason Pinlac. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
+
+
 }
 
