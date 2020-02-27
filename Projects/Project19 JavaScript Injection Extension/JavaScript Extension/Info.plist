@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Extension</string>
+	<string>JavaScript Extension</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +28,7 @@
 			<string>Action</string>
 			<key>NSExtensionActivationRule</key>
 			<dict>
-				<key>NSExtensionActivationSupportsWebPageWithMaximumCount</key>
+				<key>NSExtensionActivationSupportsWithMaxCount</key>
 				<string>1</string>
 			</dict>
 			<key>NSExtensionServiceAllowsFinderPreviewItem</key>

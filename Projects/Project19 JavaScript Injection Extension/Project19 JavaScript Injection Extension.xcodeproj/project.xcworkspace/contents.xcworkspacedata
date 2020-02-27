@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Project19 JavaScript Injection.xcodeproj">
+      location = "self:Project19 JavaScript Injection Extension.xcodeproj">
    </FileRef>
 </Workspace>

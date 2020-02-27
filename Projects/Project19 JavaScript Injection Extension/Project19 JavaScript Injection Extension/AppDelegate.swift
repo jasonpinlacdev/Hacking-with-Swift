@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Project19 JavaScript Injection
+//  Project19 JavaScript Injection Extension
 //
-//  Created by Jason Pinlac on 2/12/20.
+//  Created by Jason Pinlac on 2/26/20.
 //  Copyright © 2020 Jason Pinlac. All rights reserved.
 //
 
