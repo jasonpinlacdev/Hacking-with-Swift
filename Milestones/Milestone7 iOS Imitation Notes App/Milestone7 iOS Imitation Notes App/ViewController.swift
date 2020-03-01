@@ -85,6 +85,7 @@ class ViewController: UITableViewController {
         if editingStyle == .delete {
             notes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveNotes()
         }
     }
 }
