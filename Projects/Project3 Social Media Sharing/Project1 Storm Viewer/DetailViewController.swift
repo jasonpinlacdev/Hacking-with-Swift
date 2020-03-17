@@ -15,12 +15,30 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-        if let image = selectedImage {
-               imageView.image = UIImage(named: image)
+        
+        if let imageStr = selectedImage {
+            guard let image = UIImage(named: imageStr) else { return }
+            
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: image.size.width, height: image.size.height))
+            let renderedImage = renderer.image {
+                ctx in
+                // 1 draw the image in
+                image.draw(at: CGPoint(x: 0, y: 0))
+                
+                // 2 draw the text
+                let str = "From Storm Viewer"
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: UIFont.systemFont(ofSize: 100),
+                    .foregroundColor: UIColor.red,
+                ]
+                let attributedStr = NSAttributedString(string: str, attributes: attributes)
+                attributedStr.draw(at: CGPoint(x: 100, y: 20))
+            }
+            
+            imageView.image = renderedImage
         }
     }
     
