@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
     var selectedImage: UIImage?
-    lazy var renderer = UIGraphicsImageRenderer(size: CGSize(width: imageView.frame.size.width, height: imageView.frame.size.height))
     
     @IBOutlet var imageView: UIImageView!
     
@@ -43,7 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // notification center for keyboard adjustment
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil);
+        notificationCenter.addObserver(self, selector: #selector(adjustKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         notificationCenter.addObserver(self, selector: #selector(adjustKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
         
         // targets for components
@@ -57,7 +56,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         let addPhotoButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPhoto))
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         self.navigationItem.rightBarButtonItems = [addPhotoButton, shareButton]
-        
     }
     
     
@@ -70,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
+    
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
@@ -99,7 +98,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     func renderImage() {
         guard let originalImage = selectedImage else { return }
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: originalImage.size.width, height: originalImage.size.height))
-        let renderedImage = renderer.image { ctx in
+        let renderedImage = renderer.image { context in
             
             originalImage.draw(at: CGPoint(x: 0, y: 0))
             
@@ -137,21 +136,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         imageView.image = renderedImage
     }
     
-    @objc func topTextFieldValueChanged(_ sender: UITextField) {
-        renderImage()
-    }
     
-    @objc func bottomTextFieldValueChanged(_ sender: UITextField) {
-        renderImage()
-    }
+    @objc func topTextFieldValueChanged(_ sender: UITextField) { renderImage() }
     
-    @objc func topSliderValueChanged(_ sender: UISlider) {
-        renderImage()
-    }
     
-    @objc func bottomSliderValueChanged(_ sender: UISlider) {
-        renderImage()
-    }
+    @objc func bottomTextFieldValueChanged(_ sender: UITextField) { renderImage() }
+    
+    
+    @objc func topSliderValueChanged(_ sender: UISlider) { renderImage() }
+    
+    
+    @objc func bottomSliderValueChanged(_ sender: UISlider) { renderImage() }
     
     
     @objc func importPhoto() {
@@ -159,17 +154,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         picker.delegate = self
         picker.allowsEditing = true
         present(picker, animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
-        selectedImage = image
-        picker.dismiss(animated: true)
-        renderImage()
-        topTextField.isEnabled = true
-        bottomTextField.isEnabled = true
-        topTextSizeSlider.isEnabled = true
-        bottomTextSizeSlider.isEnabled = true
     }
     
     
@@ -186,14 +170,34 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     }
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
 }
 
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+
+extension ViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        selectedImage = image
+        topTextField.text = ""
+        topTextSizeSlider.setValue(0.0, animated: true)
+        bottomTextField.text = ""
+        bottomTextSizeSlider.setValue(0.0, animated: true)
+        picker.dismiss(animated: true)
+        renderImage()
+        topTextField.isEnabled = true
+        bottomTextField.isEnabled = true
+        topTextSizeSlider.isEnabled = true
+        bottomTextSizeSlider.isEnabled = true
+    }
+}
