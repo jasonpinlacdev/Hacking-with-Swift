@@ -1,6 +1,6 @@
 ### Swift ###
 # Xcode
 
-.xcuserstate
-.xcworkspacedata
-.xcbkptlist
+*.xcuserstate
+*.xcworkspacedata
+*.xcbkptlist
