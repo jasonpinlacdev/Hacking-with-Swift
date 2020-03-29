@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController {
     
     @IBOutlet var secret: UITextView!
     
+    var unlockButton: UIBarButtonItem?
+    var lockButton: UIBarButtonItem?
+    var setPasswordButton: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Nothing to see here..."
+        self.title = "Locked"
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -24,26 +29,82 @@ class ViewController: UIViewController {
         
         secret.addDoneButton(title: "Done", target: self, selector: #selector(keyboardDoneTapped(_:)))
         secret.isHidden = true
+        
+        // challenge 1 add the done button on nav controller for view controller that saves and locks the secrets text view
+        lockButton = UIBarButtonItem(title: "Lock", style: .plain, target: self, action: #selector(lockSecretMessage))
+        lockButton?.isEnabled = false
+        
+        
+        // challenge 2 add a password system. When authenticated user can set a password that can be used when locked out.
+        // check if there is already a saved password from KeyChainWrapper. if not unlock button is disabled on start.
+        unlockButton = UIBarButtonItem(title: "Unlock", style: .plain, target: self, action: #selector(unlockWithPassword))
+        let password: String? = KeychainWrapper.standard.string(forKey: "password")
+        if password == nil {
+            unlockButton?.isEnabled = false
+        }
+        
+        setPasswordButton = UIBarButtonItem(title: "Set Password", style: .plain, target: self, action: #selector(setPassword))
+        setPasswordButton?.isEnabled = false
+        
+        navigationItem.leftBarButtonItem = setPasswordButton
+        navigationItem.rightBarButtonItems = [lockButton!, unlockButton!]
     }
     
-    
-   
     @IBAction func authenticateTapped(_ sender: UIButton) {
-        unlockSecretMessage()
+        // perform biometric evaluation and determing whether or not to unlock the secret message text field
+        let context = LAContext()
+        
+        // Swift's Objective-C form of errors is used IE NSError because LocalAuthentication framework is an Objective-C API not Swift API
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            
+            let reason = "Identify yourself with your TouchID" // this reason here is only showed for the touchID. If you want a reason for faceID shown you must ad it to the info.plist Privacy - Face ID Usage Description
+            
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [weak self] (success, error) in
+                DispatchQueue.main.async {
+                    
+                    if success {
+                        self?.unlockSecretMessage()
+                        self?.lockButton?.isEnabled = true
+                    } else {
+                        // error biometrics failed to recognize
+                        let ac = UIAlertController(title: "Authentication Failed", message: "You could not be verified. Please try again.", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                        self?.present(ac, animated: true)
+                    }
+                }
+            }
+        } else {
+            // device is not capable of using biometrics IE touchID or faceID or it isn't enabled on the device
+            let ac = UIAlertController(title: "Biometry Unavailable", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     func unlockSecretMessage() {
         secret.isHidden = false
-        self.title = "Secret stuff!"
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? ""
+        
+        setPasswordButton?.isEnabled = true
+        unlockButton?.isEnabled = false
+        lockButton?.isEnabled = true
+        self.title = "Unlocked"
     }
     
     @objc func saveSecretMessage() {
         guard !secret.isHidden else { return }
+        self.title = "Locked"
         KeychainWrapper.standard.set(secret.text, forKey: "SecretMessage")
         secret.resignFirstResponder()
         secret.isHidden = true
-        self.title = "Nothing to see here..."
+        
+        lockButton?.isEnabled = false
+        setPasswordButton?.isEnabled = false
+        // check to see if a password was set to enable to unlock button
+        if let _ = KeychainWrapper.standard.string(forKey: "password") {
+            unlockButton?.isEnabled = true
+        }
     }
     
     @objc func adjustForKeyboard(_ notification: Notification) {
@@ -60,12 +121,55 @@ class ViewController: UIViewController {
         secret.scrollRangeToVisible(secret.selectedRange)
     }
     
+    @objc func lockSecretMessage() {
+        guard !secret.isHidden else { return }
+        saveSecretMessage()
+    }
+    
+    // alert with text field and submit. check against saved KeyChainWrapper saved password value
+    // unlock if possible
+    @objc func unlockWithPassword() {
+        guard secret.isHidden else { return }
+        let ac = UIAlertController(title: "Enter Password", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] action in
+            if let text = ac?.textFields?[0].text {
+                if let password = KeychainWrapper.standard.string(forKey: "password") {
+                    if text == password {
+                        self?.unlockSecretMessage()
+                    } else {
+                        let ac = UIAlertController(title: "Invalid Password", message: "The password you provided is invalid.", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                        self?.present(ac, animated: true)
+                    }
+                }
+            }
+        })
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
+    
+    // alert controller with text field to enter password and save using KeyChainWrapper
+    @objc func setPassword() {
+        guard !secret.isHidden else { return }
+        let ac = UIAlertController(title: "Set Password", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "Submit", style: .default) { [weak ac] action in
+            if let text = ac?.textFields?[0].text {
+                KeychainWrapper.standard.set(text, forKey: "password")
+            }
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
+    
     @objc func keyboardDoneTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
-    
 }
-
 
 // MARK: - EXTENSIONS
 
@@ -78,28 +182,4 @@ extension UITextView {
         self.inputAccessoryView = toolbar
     }
 }
-
-//extension ViewController { // This extension contains the code for managing adjustments for UITextView content insets when UITextView first reposonder keyboard appears. I eventutally want to add this UITextView functionality to my own framework JPCoreUtilities.
-//    func addNotificationsForKeyboard() {
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-//    }
-//
-//    @objc func adjustForKeyboard(_ notification: Notification) {
-//        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-//        let keyboardScreenEndFrame = keyboardValue.cgRectValue // size of keyboard relative to screen not view. It doesn't take into account rotation. Convert this to the viewEndFrame below
-//        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-//        if notification.name == UIResponder.keyboardWillHideNotification {
-//            secret.contentInset = .zero
-//        }
-//        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
-//            secret.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
-//        }
-//        secret.scrollIndicatorInsets = secret.contentInset
-//        secret.scrollRangeToVisible(secret.selectedRange)
-//    }
-//}
-
-
 
