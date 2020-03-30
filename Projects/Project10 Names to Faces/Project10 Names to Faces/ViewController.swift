@@ -7,56 +7,132 @@
 //
 
 import UIKit
+import LocalAuthentication
 
-class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UICollectionViewController {
     
     var people = [Person]()
-
+    
+    var authenticateButton: UIBarButtonItem?
+    var addFromPhotosButton: UIBarButtonItem?
+    var addFromCameraButton: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        
+        title = "Locked"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(lockApp), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        authenticateButton = UIBarButtonItem(title: "Authenticate", style: .plain, target: self, action: #selector(authenticateTapped))
+        addFromPhotosButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        addFromCameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
+        
+        authenticateButton?.isEnabled = true
+        addFromCameraButton?.isEnabled = false
+        addFromPhotosButton?.isEnabled = false
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
-            navigationItem.leftBarButtonItems = [addButton, cameraButton]
+            navigationItem.rightBarButtonItems = [addFromPhotosButton!, addFromCameraButton!]
         } else {
-            navigationItem.leftBarButtonItem = addButton
+            navigationItem.rightBarButtonItem = addFromPhotosButton
+        }
+        
+        navigationItem.leftBarButtonItem = authenticateButton
+    }
+    
+    @objc func lockApp() {
+        title = "Locked"
+        authenticateButton?.isEnabled = true
+        addFromCameraButton?.isEnabled = false
+        addFromPhotosButton?.isEnabled = false
+        people = []
+        self.collectionView.reloadData()
+    }
+    
+    @objc func authenticateTapped() {
+        let context = LAContext()
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let reason = "Identify yourself with touchID"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [weak self] (success, error) in
+                if success {
+                    // authentication might not happen on the main thread so use GCD
+                    DispatchQueue.main.async {
+                        self?.loadPeople()
+                        self?.authenticateButton?.isEnabled = false
+                        self?.addFromCameraButton?.isEnabled = true
+                        self?.addFromPhotosButton?.isEnabled = true
+                        self?.title = "Unlocked"
+                    }
+                } else {
+                    // alert failed to authenticate using biometrics
+                    let ac = UIAlertController(title: "FaceID Failed", message: "Biometric faceID failed in recognizing your face.", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                    self?.present(ac, animated: true)
+                }
+            }
+        } else {
+            // alert device does not have biometry authenticating capabilities
+            let ac = UIAlertController(title: "Biometry Scanning Unavailble", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(ac, animated: true)
         }
     }
     
-    @objc func addNewPerson() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
+    func renamePerson(at indexPath: IndexPath) {
+        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] _ in
+            guard let newName = ac?.textFields?[0].text else { return }
+            self?.people[indexPath.item].name = newName
+            self?.savePeople()
+            self?.collectionView.reloadData()
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
     
-    @objc func addNewPersonByCamera() {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
+    func deletePerson(at indexPath: IndexPath) {
+        let ac = UIAlertController(title: "Are you sure?", message: "Once deleted it will be gone forever.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default) {
+            [weak self] _ in
+            self?.people.remove(at: indexPath.item)
+            self?.savePeople()
+            self?.collectionView.reloadData()
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-         guard let image = info[.editedImage] as? UIImage else { return }
-         let imageName = UUID().uuidString
-         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-         if let jpegData = image.jpegData(compressionQuality: 0.8)  {
-             try? jpegData.write(to: imagePath)
-         }
-         let person = Person(name: "Unknown", image: imageName)
-         people.append(person)
-         collectionView.reloadData()
-         dismiss(animated: true)
-     }
-     
-     // function to get applications document directory
-     func getDocumentsDirectory() -> URL {
-         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-         return paths[0]
-     }
+    
+    func savePeople() {
+        if let data = try? JSONEncoder().encode(people) {
+            UserDefaults.standard.set(data, forKey: "people")
+        } else {
+            print("Failed to save people data.")
+        }
+    }
+    
+    
+    func loadPeople() {
+        guard let data = UserDefaults.standard.data(forKey: "people") else { return }
+        do {
+            people = try JSONDecoder().decode([Person].self, from: data)
+            self.collectionView.reloadData()
+        } catch {
+            print("Failed to load people data.")
+            print(error, error.localizedDescription)
+        }
+    }
+    
+    
+    // function to get applications document directory
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Person", for: indexPath) as? PersonCell else {
@@ -74,8 +150,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return people.count
-       }
+        return people.count
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let ac = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .alert)
@@ -91,27 +167,38 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         present(ac, animated: true)
     }
     
-    func renamePerson(at indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
-        ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Submit", style: .default) {
-            [weak self, weak ac] _ in
-            guard let newName = ac?.textFields?[0].text else { return }
-            self?.people[indexPath.item].name = newName
-            self?.collectionView.reloadData()
-        })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+}
+
+
+// MARK: - EXTENSIONS
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func addNewPerson() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
-    func deletePerson(at indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Are you sure?", message: "Once deleted it will be gone forever.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Yes", style: .default) {
-            [weak self] _ in
-            self?.people.remove(at: indexPath.item)
-            self?.collectionView.reloadData()
-        })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+    @objc func addNewPersonByCamera() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+        if let jpegData = image.jpegData(compressionQuality: 0.8)  {
+            try? jpegData.write(to: imagePath)
+        }
+        let person = Person(name: "Unknown", image: imageName)
+        people.append(person)
+        savePeople()
+        collectionView.reloadData()
+        dismiss(animated: true)
     }
 }

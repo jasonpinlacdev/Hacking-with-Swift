@@ -62,10 +62,8 @@ class ViewController: UIViewController {
             
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [weak self] (success, error) in
                 DispatchQueue.main.async {
-                    
                     if success {
                         self?.unlockSecretMessage()
-                        self?.lockButton?.isEnabled = true
                     } else {
                         // error biometrics failed to recognize
                         let ac = UIAlertController(title: "Authentication Failed", message: "You could not be verified. Please try again.", preferredStyle: .alert)
