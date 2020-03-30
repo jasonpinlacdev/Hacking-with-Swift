@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     
     @IBOutlet var secret: UITextView!
     
-    var unlockButton: UIBarButtonItem?
-    var lockButton: UIBarButtonItem?
-    var setPasswordButton: UIBarButtonItem?
+    var unlockButton = UIBarButtonItem(title: "Unlock", style: .plain, target: self, action: #selector(unlockWithPassword))
+    var lockButton = UIBarButtonItem(title: "Lock", style: .plain, target: self, action: #selector(lockSecretMessage))
+    var setPasswordButton = UIBarButtonItem(title: "Set Password", style: .plain, target: self, action: #selector(setPassword))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,23 +31,20 @@ class ViewController: UIViewController {
         secret.isHidden = true
         
         // challenge 1 add the done button on nav controller for view controller that saves and locks the secrets text view
-        lockButton = UIBarButtonItem(title: "Lock", style: .plain, target: self, action: #selector(lockSecretMessage))
-        lockButton?.isEnabled = false
+        lockButton.isEnabled = false
         
         
         // challenge 2 add a password system. When authenticated user can set a password that can be used when locked out.
         // check if there is already a saved password from KeyChainWrapper. if not unlock button is disabled on start.
-        unlockButton = UIBarButtonItem(title: "Unlock", style: .plain, target: self, action: #selector(unlockWithPassword))
         let password: String? = KeychainWrapper.standard.string(forKey: "password")
         if password == nil {
-            unlockButton?.isEnabled = false
+            unlockButton.isEnabled = false
         }
         
-        setPasswordButton = UIBarButtonItem(title: "Set Password", style: .plain, target: self, action: #selector(setPassword))
-        setPasswordButton?.isEnabled = false
+        setPasswordButton.isEnabled = false
         
         navigationItem.leftBarButtonItem = setPasswordButton
-        navigationItem.rightBarButtonItems = [lockButton!, unlockButton!]
+        navigationItem.rightBarButtonItems = [lockButton, unlockButton]
     }
     
     @IBAction func authenticateTapped(_ sender: UIButton) {
@@ -66,7 +63,7 @@ class ViewController: UIViewController {
                         self?.unlockSecretMessage()
                     } else {
                         // error biometrics failed to recognize
-                        let ac = UIAlertController(title: "Authentication Failed", message: "You could not be verified. Please try again.", preferredStyle: .alert)
+                        let ac = UIAlertController(title: "Authentication Failed", message: error?.localizedDescription, preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
                         self?.present(ac, animated: true)
                     }
@@ -74,9 +71,9 @@ class ViewController: UIViewController {
             }
         } else {
             // device is not capable of using biometrics IE touchID or faceID or it isn't enabled on the device
-            let ac = UIAlertController(title: "Biometry Unavailable", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
-            present(ac, animated: true)
+            let alertContoller = UIAlertController(title: "Biometry Unavailable", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
+            alertContoller.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(alertContoller, animated: true)
         }
     }
     
@@ -84,9 +81,9 @@ class ViewController: UIViewController {
         secret.isHidden = false
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? ""
         
-        setPasswordButton?.isEnabled = true
-        unlockButton?.isEnabled = false
-        lockButton?.isEnabled = true
+        setPasswordButton.isEnabled = true
+        unlockButton.isEnabled = false
+        lockButton.isEnabled = true
         self.title = "Unlocked"
     }
     
@@ -97,11 +94,11 @@ class ViewController: UIViewController {
         secret.resignFirstResponder()
         secret.isHidden = true
         
-        lockButton?.isEnabled = false
-        setPasswordButton?.isEnabled = false
+        lockButton.isEnabled = false
+        setPasswordButton.isEnabled = false
         // check to see if a password was set to enable to unlock button
         if let _ = KeychainWrapper.standard.string(forKey: "password") {
-            unlockButton?.isEnabled = true
+            unlockButton.isEnabled = true
         }
     }
     
@@ -128,12 +125,12 @@ class ViewController: UIViewController {
     // unlock if possible
     @objc func unlockWithPassword() {
         guard secret.isHidden else { return }
-        let ac = UIAlertController(title: "Enter Password", message: nil, preferredStyle: .alert)
-        ac.addTextField()
+        let alertController = UIAlertController(title: "Enter Password", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
         
-        ac.addAction(UIAlertAction(title: "Submit", style: .default) {
-            [weak self, weak ac] action in
-            if let text = ac?.textFields?[0].text {
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak alertController] action in
+            if let text = alertController?.textFields?[0].text {
                 if let password = KeychainWrapper.standard.string(forKey: "password") {
                     if text == password {
                         self?.unlockSecretMessage()
@@ -146,22 +143,22 @@ class ViewController: UIViewController {
             }
         })
         
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
     }
     
     // alert controller with text field to enter password and save using KeyChainWrapper
     @objc func setPassword() {
         guard !secret.isHidden else { return }
-        let ac = UIAlertController(title: "Set Password", message: nil, preferredStyle: .alert)
-        ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Submit", style: .default) { [weak ac] action in
-            if let text = ac?.textFields?[0].text {
+        let alertController = UIAlertController(title: "Set Password", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak alertController] action in
+            if let text = alertController?.textFields?[0].text {
                 KeychainWrapper.standard.set(text, forKey: "password")
             }
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
     }
     
     @objc func keyboardDoneTapped(_ sender: Any) {

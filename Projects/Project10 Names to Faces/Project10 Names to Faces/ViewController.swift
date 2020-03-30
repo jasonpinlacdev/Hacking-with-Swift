@@ -56,54 +56,54 @@ class ViewController: UICollectionViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             let reason = "Identify yourself with touchID"
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [weak self] (success, error) in
-                if success {
-                    // authentication might not happen on the main thread so use GCD
-                    DispatchQueue.main.async {
+                // biometric identification repsonse is might not be on the main thread and we are doing UI work here so use GCD
+                DispatchQueue.main.async {
+                    if success {
+                        // authentication might not happen on the main thread so use GCD
                         self?.loadPeople()
                         self?.authenticateButton?.isEnabled = false
                         self?.addFromCameraButton?.isEnabled = true
                         self?.addFromPhotosButton?.isEnabled = true
                         self?.title = "Unlocked"
+                        
+                    } else {
+                        // alert failed to authenticate using biometrics
+                        let alertController = UIAlertController(title: "Failed to Authenticate", message: error?.localizedDescription, preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                        self?.present(alertController, animated: true)
                     }
-                } else {
-                    // alert failed to authenticate using biometrics
-                    let ac = UIAlertController(title: "FaceID Failed", message: "Biometric faceID failed in recognizing your face.", preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
-                    self?.present(ac, animated: true)
                 }
             }
         } else {
             // alert device does not have biometry authenticating capabilities
-            let ac = UIAlertController(title: "Biometry Scanning Unavailble", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
-            present(ac, animated: true)
+            let alertController = UIAlertController(title: "Biometry Scanning Unavailble", message: "You're device is not configured for biometric authentication.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(alertController, animated: true)
         }
     }
     
     func renamePerson(at indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
-        ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Submit", style: .default) {
-            [weak self, weak ac] _ in
-            guard let newName = ac?.textFields?[0].text else { return }
+        let alertController = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default) { [weak self, weak alertController] _ in
+            guard let newName = alertController?.textFields?[0].text else { return }
             self?.people[indexPath.item].name = newName
             self?.savePeople()
             self?.collectionView.reloadData()
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
     }
     
     func deletePerson(at indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Are you sure?", message: "Once deleted it will be gone forever.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Yes", style: .default) {
-            [weak self] _ in
+        let alertController = UIAlertController(title: "Are you sure?", message: "Once deleted it will be gone forever.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
             self?.people.remove(at: indexPath.item)
             self?.savePeople()
             self?.collectionView.reloadData()
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
     }
     
     
@@ -123,7 +123,6 @@ class ViewController: UICollectionViewController {
             self.collectionView.reloadData()
         } catch {
             print("Failed to load people data.")
-            print(error, error.localizedDescription)
         }
     }
     
@@ -154,17 +153,15 @@ class ViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let ac = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Rename", style: .default) {
-            [weak self] _ in
+        let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Rename", style: .default) { [weak self] _ in
             self?.renamePerson(at: indexPath)
         })
-        ac.addAction(UIAlertAction(title: "Delete", style: .default) {
-            [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Delete", style: .default) { [weak self] _ in
             self?.deletePerson(at: indexPath)
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
     }
     
 }
@@ -193,7 +190,11 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let imageName = UUID().uuidString
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
         if let jpegData = image.jpegData(compressionQuality: 0.8)  {
-            try? jpegData.write(to: imagePath)
+            do {
+                try jpegData.write(to: imagePath)
+            } catch {
+                print("Failed to write data contents of the picked image: \(imageName) to documentDirectory path: \(imagePath).")
+            }
         }
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
