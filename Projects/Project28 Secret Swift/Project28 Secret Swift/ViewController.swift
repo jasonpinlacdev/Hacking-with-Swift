@@ -13,9 +13,26 @@ class ViewController: UIViewController {
     
     @IBOutlet var secret: UITextView!
     
-    var unlockButton = UIBarButtonItem(title: "Unlock", style: .plain, target: self, action: #selector(unlockWithPassword))
-    var lockButton = UIBarButtonItem(title: "Lock", style: .plain, target: self, action: #selector(lockSecretMessage))
-    var setPasswordButton = UIBarButtonItem(title: "Set Password", style: .plain, target: self, action: #selector(setPassword))
+    // challenge 1 add the done button on nav controller for view controller that saves and locks the secrets text view
+    lazy var lockButton: UIBarButtonItem = { () -> UIBarButtonItem in
+        let button = UIBarButtonItem(title: "Lock", style: .plain, target: self, action: #selector(lockSecretMessage))
+        button.isEnabled = false
+        return button
+    }()
+    
+    // challenge 2 add a password system. When authenticated user can set a password that can be used when locked out.
+    // check if there is already a saved password from KeyChainWrapper. if not unlock button is disabled on start.
+    lazy var unlockButton: UIBarButtonItem = { () -> UIBarButtonItem in
+        let button = UIBarButtonItem(title: "Unlock", style: .plain, target: self, action: #selector(unlockWithPassword))
+        return button
+    }()
+    
+    lazy var setPasswordButton: UIBarButtonItem = {
+        let button =  UIBarButtonItem(title: "Set Password", style: .plain, target: self, action: #selector(setPassword))
+        button.isEnabled = false
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +47,11 @@ class ViewController: UIViewController {
         secret.addDoneButton(title: "Done", target: self, selector: #selector(keyboardDoneTapped(_:)))
         secret.isHidden = true
         
-        // challenge 1 add the done button on nav controller for view controller that saves and locks the secrets text view
-        lockButton.isEnabled = false
-        
-        
-        // challenge 2 add a password system. When authenticated user can set a password that can be used when locked out.
-        // check if there is already a saved password from KeyChainWrapper. if not unlock button is disabled on start.
         let password: String? = KeychainWrapper.standard.string(forKey: "password")
         if password == nil {
             unlockButton.isEnabled = false
         }
-        
-        setPasswordButton.isEnabled = false
-        
+
         navigationItem.leftBarButtonItem = setPasswordButton
         navigationItem.rightBarButtonItems = [lockButton, unlockButton]
     }

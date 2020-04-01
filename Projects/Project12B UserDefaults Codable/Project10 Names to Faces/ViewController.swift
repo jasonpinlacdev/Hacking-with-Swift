@@ -13,9 +13,23 @@ class ViewController: UICollectionViewController {
     
     var people = [Person]()
     
-    var authenticateButton: UIBarButtonItem?
-    var addFromPhotosButton: UIBarButtonItem?
-    var addFromCameraButton: UIBarButtonItem?
+    lazy var authenticateButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Authenticate", style: .plain, target: self, action: #selector(authenticateTapped))
+        button.isEnabled = true
+        return button
+    }()
+    
+    lazy var addFromPhotosButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        button.isEnabled = false
+        return button
+    }()
+    
+    lazy var addFromCameraButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
+        button.isEnabled = false
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +38,8 @@ class ViewController: UICollectionViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(lockApp), name: UIApplication.willResignActiveNotification, object: nil)
         
-        authenticateButton = UIBarButtonItem(title: "Authenticate", style: .plain, target: self, action: #selector(authenticateTapped))
-        addFromPhotosButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
-        addFromCameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPersonByCamera))
-        
-        authenticateButton?.isEnabled = true
-        addFromCameraButton?.isEnabled = false
-        addFromPhotosButton?.isEnabled = false
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            navigationItem.rightBarButtonItems = [addFromPhotosButton!, addFromCameraButton!]
+            navigationItem.rightBarButtonItems = [addFromPhotosButton, addFromCameraButton]
         } else {
             navigationItem.rightBarButtonItem = addFromPhotosButton
         }
@@ -43,9 +49,9 @@ class ViewController: UICollectionViewController {
     
     @objc func lockApp() {
         title = "Locked"
-        authenticateButton?.isEnabled = true
-        addFromCameraButton?.isEnabled = false
-        addFromPhotosButton?.isEnabled = false
+        authenticateButton.isEnabled = true
+        addFromCameraButton.isEnabled = false
+        addFromPhotosButton.isEnabled = false
         people = []
         self.collectionView.reloadData()
     }
@@ -61,11 +67,10 @@ class ViewController: UICollectionViewController {
                     if success {
                         // authentication might not happen on the main thread so use GCD
                         self?.loadPeople()
-                        self?.authenticateButton?.isEnabled = false
-                        self?.addFromCameraButton?.isEnabled = true
-                        self?.addFromPhotosButton?.isEnabled = true
+                        self?.authenticateButton.isEnabled = false
+                        self?.addFromCameraButton.isEnabled = true
+                        self?.addFromPhotosButton.isEnabled = true
                         self?.title = "Unlocked"
-                        
                     } else {
                         // alert failed to authenticate using biometrics
                         let alertController = UIAlertController(title: "Failed to Authenticate", message: error?.localizedDescription, preferredStyle: .alert)
@@ -203,5 +208,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         dismiss(animated: true)
     }
 }
+
 
 
