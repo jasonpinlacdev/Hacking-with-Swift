@@ -14,6 +14,7 @@
 		E13EA625244559A600CDB4A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13EA624244559A600CDB4A3 /* Assets.xcassets */; };
 		E13EA628244559A600CDB4A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13EA626244559A600CDB4A3 /* LaunchScreen.storyboard */; };
 		E13EA63424457D5500CDB4A3 /* CardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13EA63324457D5500CDB4A3 /* CardButton.swift */; };
+		E13EA656244635A600CDB4A3 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13EA655244635A600CDB4A3 /* OptionsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E13EA627244559A600CDB4A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E13EA629244559A600CDB4A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E13EA63324457D5500CDB4A3 /* CardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButton.swift; sourceTree = "<group>"; };
+		E13EA655244635A600CDB4A3 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				E13EA61B244559A300CDB4A3 /* AppDelegate.swift */,
 				E13EA61D244559A300CDB4A3 /* SceneDelegate.swift */,
 				E13EA61F244559A300CDB4A3 /* ViewController.swift */,
+				E13EA655244635A600CDB4A3 /* OptionsTableViewController.swift */,
 				E13EA63324457D5500CDB4A3 /* CardButton.swift */,
 				E13EA621244559A300CDB4A3 /* Main.storyboard */,
 				E13EA624244559A600CDB4A3 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13EA656244635A600CDB4A3 /* OptionsTableViewController.swift in Sources */,
 				E13EA620244559A300CDB4A3 /* ViewController.swift in Sources */,
 				E13EA63424457D5500CDB4A3 /* CardButton.swift in Sources */,
 				E13EA61C244559A300CDB4A3 /* AppDelegate.swift in Sources */,

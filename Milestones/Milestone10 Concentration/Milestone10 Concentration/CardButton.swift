@@ -29,6 +29,8 @@ class CardButton: UIButton {
     
     func flipUp() {
         guard !isFlippedToShowContent else { return }
+        UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        
         setTitle(content, for: .normal)
         backgroundColor = UIColor.white
         isFlippedToShowContent = true
@@ -36,6 +38,8 @@ class CardButton: UIButton {
     
     func flipDown() {
         guard isFlippedToShowContent else { return }
+        UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: nil, completion: nil)
+        
         setTitle("", for: .normal)
         backgroundColor = UIColor.systemRed
         isFlippedToShowContent = false

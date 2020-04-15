@@ -7,17 +7,10 @@
 //
 
 
-
-// MARK: - TODO
-// ADD FLIP ANIMATIONS
-// CHCEK ALL CARDS ARE MATCHED AND END/ RESTART IF SO
-
-
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var contentForCardButtons = ["🍎","🍑","🍊","🍐","🥥","🍒","🍌","🍋","🍏","🥝","🍉"]
+    var contentForCardButtons = ["🍎","🍑","🍊","🍐","🥥","🍒","🍌","🍋","🍏","🥝","🍉","🥭"]
     var cardButtons = [CardButton]()
     
     var firstTouchedCard: CardButton?
@@ -27,13 +20,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Concentration"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .plain, target: self, action: #selector(optionsTapped))
+        
         createCards()
         setupStackViews()
     }
     
+    @objc func optionsTapped() {
+        let optionsTableViewController = OptionsTableViewController()
+        optionsTableViewController.viewController = self
+        navigationController?.pushViewController(optionsTableViewController, animated: true)
+    }
     
     func setupStackViews() {
+        cardButtons.shuffle()
+        
         let verticalStackView = UIStackView()
+        verticalStackView.accessibilityIdentifier = "Vertical Column"
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .fill
         verticalStackView.distribution = .fillEqually
@@ -48,9 +52,11 @@ class ViewController: UIViewController {
         verticalStackView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor).isActive = true
         
         var horizontalStackView = UIStackView()
+
         for (index, cardButton) in cardButtons.enumerated() {
             if index % 4 == 0 {
                 horizontalStackView = UIStackView()
+                horizontalStackView.accessibilityIdentifier = "Horizontal Row"
                 horizontalStackView.axis = .horizontal
                 horizontalStackView.alignment = .fill
                 horizontalStackView.distribution = .fillEqually
@@ -66,12 +72,15 @@ class ViewController: UIViewController {
         for content in contentForCardButtons {
             let cardA = CardButton()
             cardA.configure(content: content)
+            cardA.accessibilityIdentifier = content
             cardA.addTarget(self, action: #selector(cardButtonTapped(_:)), for: .touchUpInside)
             
             let cardB = CardButton()
             cardB.configure(content: content)
-            cardButtons.append(contentsOf: [cardA, cardB])
+            cardB.accessibilityIdentifier = content
             cardB.addTarget(self, action: #selector(cardButtonTapped(_:)), for: .touchUpInside)
+            
+            cardButtons.append(contentsOf: [cardA, cardB])
         }
         cardButtons.shuffle()
     }
@@ -94,8 +103,6 @@ class ViewController: UIViewController {
         
         // if secondTouchedCard gets assigned sender that means two cards have been touched
         // check if match
-
-        
         if firstTouchedCard?.content == secondTouchedCard?.content {
             firstTouchedCard?.isMatched = true
             secondTouchedCard?.isMatched = true
@@ -107,9 +114,7 @@ class ViewController: UIViewController {
                 self?.firstTouchedCard = nil
                 self?.secondTouchedCard = nil
             }
-            
-            // MARK: TODO - check if all cards are matched and then restart game
-            
+            checkToResetGame()
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.flipDownAllCards()
@@ -125,6 +130,55 @@ class ViewController: UIViewController {
             if !card.isMatched {
                 card.flipDown()
             }
+        }
+    }
+    
+    
+    func checkToResetGame() {
+        for card in cardButtons {
+            if !card.isMatched { return }
+        }
+        
+        // alert youve completed the game
+        let endGameAlertController = UIAlertController(title: "Congratulations", message: "You've matched all the cards.", preferredStyle: .alert)
+        endGameAlertController.addAction(UIAlertAction(title: "Play Again", style: .default) { [weak self] action in
+            // reset all values to starting
+            self?.resetGame()
+        })
+        present(endGameAlertController, animated: true)
+    }
+    
+    func resetGame() {
+        removeAllSubviews()
+        cardButtons.removeAll(keepingCapacity: true)
+        createCards()
+        setupStackViews()
+    }
+    
+    
+    func removeAllSubviews() {
+        // remove all card buttons
+        for verticalColumn in view.subviews {
+            for horizontalRow in verticalColumn.subviews {
+                for cardButton in horizontalRow.subviews {
+                    print("REMOVING: \(cardButton.accessibilityIdentifier!)")
+                    cardButton.removeFromSuperview()
+                }
+            }
+        }
+        
+        // remove all rows
+        for verticalColumn in view.subviews {
+            for horizontalRow in verticalColumn.subviews {
+                print("REMOVING: \(horizontalRow.accessibilityIdentifier!)")
+                horizontalRow.removeFromSuperview()
+            }
+        }
+        
+        // remove all columns
+        for verticalColumn in view.subviews {
+            print("REMOVING: \(verticalColumn.accessibilityIdentifier!)")
+            verticalColumn.removeFromSuperview()
         }
     }
     
